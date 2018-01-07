@@ -16,8 +16,6 @@ public interface MenuContract {
 
     interface Presenter extends BasePresenter<View> {
         
-        void menu(int mPilihan);
-
-        
+        void menu(String mPilihan);        
     }
 }
