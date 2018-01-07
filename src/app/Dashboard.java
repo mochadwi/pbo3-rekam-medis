@@ -8,7 +8,7 @@ import app.views.menu.MenuView;
 
 public class Dashboard {
 
-    private static Status status = Status.AUTH;
+    public static Status status = Status.AUTH;
 
     public static void main(String[] args) {
 
