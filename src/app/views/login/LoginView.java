@@ -1,6 +1,7 @@
 package app.views.login;
 
 import app.utils.Config;
+import app.views.menu.MenuContract;
 
 import java.util.Scanner;
 
@@ -9,10 +10,16 @@ public class LoginView implements LoginContract.View {
     private String mNamaPengguna, mKataSandi;
 
     private LoginContract.Presenter presenter;
+    
+    private MenuContract.View menuView;
 
     @Override
     public void setPresenter(LoginContract.Presenter presenter) {
         this.presenter = presenter;
+    }
+    
+    public void setMenuView(MenuContract.View menuView) {
+        this.menuView = menuView;
     }
 
     @Override
@@ -43,6 +50,7 @@ public class LoginView implements LoginContract.View {
     @Override
     public void showLoginSuccessView() {
         System.out.println("Selamat Datang!!!\n\n");
+        
     }
 
     @Override

@@ -2,6 +2,8 @@ package app;
 
 import app.views.login.LoginPresenter;
 import app.views.login.LoginView;
+import app.views.menu.MenuPresenter;
+import app.views.menu.MenuView;
 
 public class Dashboard {
 
@@ -11,7 +13,13 @@ public class Dashboard {
     }
 
     private static void initMenu() {
+        MenuPresenter menuPresenter = new MenuPresenter();
+        MenuView menuView = new MenuView();
 
+        menuPresenter.bind(menuView);
+        menuView.setPresenter(menuPresenter);
+
+        menuView.showView();
     }
 
     private static void initLogin() {
