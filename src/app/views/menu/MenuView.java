@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class MenuView implements MenuContract.View {
     
-    private int mPilihan;
+    private String mPilihan;
     private MenuContract.Presenter presenter;
     
     @Override
@@ -31,7 +31,7 @@ public class MenuView implements MenuContract.View {
         System.out.println("| 0. Keluar                                     |");
         System.out.println("|                                               |");
         System.out.print("| Pilihan Anda ? ");
-        mPilihan = in.nextInt();
+        mPilihan = in.next();
         System.out.println("                               |");
         System.out.println("|                                               |");
         System.out.println("=================================================");

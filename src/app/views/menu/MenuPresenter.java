@@ -10,25 +10,27 @@ package app.views.menu;
  * @author G-Eight
  */
 public class MenuPresenter implements MenuContract.Presenter {
-   
+
     private MenuContract.View menuView;
-    
+
     @Override
-    public void menu(int pilihan) {
+    public void menu(String pilihan) {
         menuView.showLoading();
-        
-        if (pilihan < 1 || pilihan > 4) {
+
+        //int choice = Integer.parseInt(pilihan);
+        if (pilihan.equals("1") || pilihan.equals("2") || pilihan.equals("3")
+                || pilihan.equals("4")) {
+
+            menuView.showMenuSuccesView();
+
+        } else {
             menuView.showMenuErrorView();
             menuView.showView();
-            return;
         }
-        
-        menuView.showMenuSuccesView();
-        
+
     }
 
-
-     @Override
+    @Override
     public void bind(MenuContract.View menuView) {
         this.menuView = menuView;
     }
@@ -38,5 +40,4 @@ public class MenuPresenter implements MenuContract.Presenter {
         this.menuView = null;
     }
 
-    
 }
