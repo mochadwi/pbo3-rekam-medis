@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class MenuView implements MenuContract.View {
     
     private String mPilihan;
+
     private MenuContract.Presenter presenter;
     
     @Override

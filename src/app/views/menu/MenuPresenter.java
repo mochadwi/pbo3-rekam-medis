@@ -39,5 +39,4 @@ public class MenuPresenter implements MenuContract.Presenter {
     public void unBind() {
         this.menuView = null;
     }
-
 }
