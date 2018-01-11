@@ -49,7 +49,7 @@ public class PatientView implements PatientContract.View {
 
     @Override
     public void showCreateDataView() {
-//        System.out.print("  Masukkan Nama Anggota   : ");
+        System.out.print("  Masukkan Nama Anggota   : ");
 //        nama = SC.nextLine();
 //        System.out.print("  Masukkan Alamat         : ");
 //        alamat = SC.nextLine();

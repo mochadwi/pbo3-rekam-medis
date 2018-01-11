@@ -19,15 +19,25 @@ public class PatientPresenter implements PatientContract.Presenter {
     public void menu(String pilihan) {
 
         view.showLoading();
+        view.showMenuSuccessView();
 
-        if (pilihan.equals("1") || pilihan.equals("2") || pilihan.equals("3")
-                || pilihan.equals("4")) {
+        switch (pilihan) {
+            case "1":
+                view.showCreateDataView();
+                break;
+            case "2":
+                view.showUpdateDataView();
+                break;
+            case "3":
+                view.showDeleteDataView();
+                break;
+            case "4":
+                view.showReadDataView();
+                break;
 
-            view.showMenuSuccessView();
-
-        } else {
-            view.showMenuErrorView();
-            view.showView();
+            default:
+                view.showMenuErrorView();
+                view.showView();
         }
     }
 
