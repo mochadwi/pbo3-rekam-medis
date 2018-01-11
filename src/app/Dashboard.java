@@ -5,10 +5,13 @@ import app.views.login.LoginPresenter;
 import app.views.login.LoginView;
 import app.views.menu.MenuPresenter;
 import app.views.menu.MenuView;
+import app.views.patient.PatientPresenter;
+import app.views.patient.PatientView;
 
 public class Dashboard {
 
-    public static Status status = Status.AUTH;
+    // store state / session of apps
+    public static Status status = Status.DATA;
 
     public static void main(String[] args) {
 
@@ -54,11 +57,16 @@ public class Dashboard {
 
     private static void initPatient() {
 
+        PatientPresenter patientPresenter = new PatientPresenter();
+        PatientView patientView = new PatientView();
+
+        patientPresenter.bind(patientView);
+        patientView.setPresenter(patientPresenter);
+
+        patientView.showView();
     }
 
     private static void initMenu() {
-
-        status = Status.MENU;
 
         MenuPresenter menuPresenter = new MenuPresenter();
         MenuView menuView = new MenuView();
@@ -67,6 +75,8 @@ public class Dashboard {
         menuView.setPresenter(menuPresenter);
 
         menuView.showView();
+
+        status = Status.DATA;
     }
 
     private static void initRegist() {
