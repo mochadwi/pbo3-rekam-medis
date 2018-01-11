@@ -17,6 +17,14 @@ public interface PatientContract {
 
         void showView();
 
+        void showCreateDataView();
+
+        void showReadDataView();
+
+        void showUpdateDataView();
+
+        void showDeleteDataView();
+
         void showMenuErrorView();
 
         void showMenuSuccessView();

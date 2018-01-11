@@ -5,6 +5,8 @@
  */
 package app.views.patient;
 
+import app.utils.Strings;
+
 import java.util.Scanner;
 
 /**
@@ -22,37 +24,67 @@ public class PatientView implements PatientContract.View {
         Scanner in = new Scanner(System.in);
 
         System.out.println("===============================================================================");
-        System.out.println("                            -= KLINIK KATAMSO =-                               ");
-        System.out.println("   Jl. Brigjen Katamso, Cihaurgeulis, Cibeunying Kaler, Bandung, Jawa Barat    ");
+        System.out.println("                            -= " + Strings.mMsgHospital + " =-                               ");
+        System.out.println("   " + Strings.mMsgAddress + "    ");
         System.out.println("===============================================================================");
+
+        System.out.println("\n");
+
         System.out.println("=================================================");
-        System.out.println("|          <>   -= MENU UTAMA =-   <>           |");
+        System.out.println("|          <>   -= " + Strings.mMsgDefaultMenu + Strings.mMsgTitlePatient + " =-   <>          |");
         System.out.println("=================================================");
         System.out.println("|                                               |");
-        System.out.println("| 1. Data Pasien                                |");
-        System.out.println("| 2. Data Dokter                                |");
-        System.out.println("| 3. Data Obat                                  |");
-        System.out.println("| 4. Data Transaksi                             |");
-        System.out.println("| 0. Keluar                                     |");
+        System.out.println("| 1. " + Strings.mMsgCreateData + " \t\t\t\t\t\t\t\t|");
+        System.out.println("| 2. " + Strings.mMsgUpdateData + " \t\t\t\t\t\t\t\t\t|");
+        System.out.println("| 3. " + Strings.mMsgDeleteData + " \t\t\t\t\t\t\t\t|");
+        System.out.println("| 4. " + Strings.mMsgReadData + " \t\t\t\t\t\t\t\t|");
+        System.out.println("| 0. " + Strings.mMsgExit + Strings.mMsgTitlePatient + " \t\t\t\t\t\t|");
         System.out.println("|                                               |");
-        System.out.print("| Pilihan Anda ? ");
+        System.out.print(Strings.mMsgChoice);
         mPilihan = in.next();
-        System.out.println("                               |");
-        System.out.println("|                                               |");
         System.out.println("=================================================");
-        System.out.println("===============================================================================");
 
         presenter.menu(mPilihan);
     }
 
     @Override
+    public void showCreateDataView() {
+//        System.out.print("  Masukkan Nama Anggota   : ");
+//        nama = SC.nextLine();
+//        System.out.print("  Masukkan Alamat         : ");
+//        alamat = SC.nextLine();
+//        System.out.print("  Masukkan No Telp        : ");
+//        no_telp = SC.nextLine();
+//        System.out.print("  Masukkan Pekerjaan      : ");
+//        pekerjaan = SC.nextLine();
+//        System.out.print("  Masukkan Instansi       : ");
+//        instansi = SC.nextLine();
+//        System.out.print("  Masukkan Alamat Instansi: ");
+    }
+
+    @Override
+    public void showReadDataView() {
+
+    }
+
+    @Override
+    public void showUpdateDataView() {
+
+    }
+
+    @Override
+    public void showDeleteDataView() {
+
+    }
+
+    @Override
     public void showMenuErrorView() {
-        System.out.println("Pilih Angka 1-4!");
+        System.out.print("\n\n\n\nPilih Angka 1-4!\n\n\n\n");
     }
 
     @Override
     public void showMenuSuccessView() {
-        System.out.println("Succes!!");
+        System.out.println("\n\n\n\nSucces!!\n\n\n\n");
     }
 
     @Override
