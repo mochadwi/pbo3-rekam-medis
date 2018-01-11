@@ -9,9 +9,9 @@ import app.BasePresenter;
 import app.BaseView;
 
 /**
- *
- * @author G-Eight
+ * @author mochadwi
  */
+
 public interface PatientContract {
     interface View extends BaseView<Presenter> {
 
@@ -19,12 +19,13 @@ public interface PatientContract {
 
         void showMenuErrorView();
 
-        
+        void showMenuSuccessView();
     }
 
     interface Presenter extends BasePresenter<View> {
-        
+
         void validation(int pilihan);
-        
+
+        void menu(String pilihan);
     }
 }
