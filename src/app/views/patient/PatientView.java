@@ -8,6 +8,7 @@ package app.views.patient;
 import app.models.Patient;
 import app.utils.Strings;
 
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -89,6 +90,36 @@ public class PatientView implements PatientContract.View {
 
     @Override
     public void showReadDataView() {
+
+        List<Patient> pasien = presenter.read();
+
+        System.out.println("|=============================================================================|");
+        System.out.println("|                       -= DATA PASIEN REKAM MEDIS=-                          |");
+        System.out.println("|=============================================================================|");
+
+        for (int i = 0; i < pasien.size(); i++) {
+
+            System.out.println("-----------------------------DATA PASIEN Ke-" + (i + 1) + "-------------------------------");
+            System.out.println("Kode Pasien   : " + pasien.get(i).getKd());
+            System.out.println("Nama Pasien   : " + pasien.get(i).getName());
+            System.out.println("Alamat        : " + pasien.get(i).getAddr());
+            System.out.println("Jenis Kelamin : " + pasien.get(i).getGender());
+            System.out.println("Umur          : " + pasien.get(i).getAge());
+//            System.out.println("Agama         : " + pasien.get(i).get);
+//            System.out.println("========================================================================");
+//            System.out.println("|                         -= DATA REKAM MEDIS =-                       |");
+//            System.out.println("========================================================================");
+//            System.out.println("| TGL BEROBAT |   PEMERIKSAAN   |       DIAGNOSIS     |   PENGOBATAN   |");
+//            System.out.println("========================================================================");
+//            System.out.println("|             |                 |                     |                |");
+//            System.out.println("========================================================================");
+//            System.out.print(pasien.get(i).TglBerobat);
+//            System.out.print(pasien.get(i).Pemeriksaan);
+//            System.out.print(pasien.get(i).Diagnosis);
+//            System.out.print(pasien.get(i).Pengobatan);
+        }
+        System.out.println();
+        System.out.print("==============================================================================");
 
     }
 
