@@ -64,6 +64,8 @@ public class Dashboard {
         patientView.setPresenter(patientPresenter);
 
         patientView.showView();
+
+        status = Status.MENU;
     }
 
     private static void initMenu() {
@@ -86,8 +88,6 @@ public class Dashboard {
 
     private static void initLogin() {
 
-        status = Status.AUTH;
-
         LoginPresenter loginPresenter = new LoginPresenter();
         LoginView loginView = new LoginView();
 
@@ -95,5 +95,7 @@ public class Dashboard {
         loginView.setPresenter(loginPresenter);
 
         loginView.showView();
+
+        status = Status.MENU;
     }
 }
