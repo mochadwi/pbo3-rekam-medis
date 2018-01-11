@@ -5,6 +5,7 @@
  */
 package app.views.patient;
 
+import app.models.Patient;
 import app.utils.Strings;
 
 import java.util.Scanner;
@@ -15,13 +16,17 @@ import java.util.Scanner;
 
 public class PatientView implements PatientContract.View {
 
+    private Scanner in;
     private String mPilihan;
 
     private PatientContract.Presenter presenter;
 
+    public PatientView() {
+        this.in = new Scanner(System.in);
+    }
+
     @Override
     public void showView() {
-        Scanner in = new Scanner(System.in);
 
         System.out.println("===============================================================================");
         System.out.println("                            -= " + Strings.mMsgHospital + " =-                               ");
@@ -49,17 +54,37 @@ public class PatientView implements PatientContract.View {
 
     @Override
     public void showCreateDataView() {
-        System.out.print("  Masukkan Nama Anggota   : ");
-//        nama = SC.nextLine();
-//        System.out.print("  Masukkan Alamat         : ");
-//        alamat = SC.nextLine();
-//        System.out.print("  Masukkan No Telp        : ");
-//        no_telp = SC.nextLine();
-//        System.out.print("  Masukkan Pekerjaan      : ");
-//        pekerjaan = SC.nextLine();
-//        System.out.print("  Masukkan Instansi       : ");
-//        instansi = SC.nextLine();
-//        System.out.print("  Masukkan Alamat Instansi: ");
+        Patient patient = new Patient();
+
+        System.out.println("=================================================");
+        System.out.println("|      <>   -= " + Strings.mMsgCreateData + " " + Strings.mMsgTitlePatient + " =-   <>       |");
+        System.out.println("=================================================");
+
+        System.out.print("Masukkan Nama Pasien    : ");
+        patient.setName(in.next());
+
+        System.out.print("Masukkan Umur           : ");
+        patient.setAge(in.next());
+
+        System.out.print("Masukkan Alamat         : ");
+        patient.setAddr(in.next());
+
+        System.out.print("Masukkan Pekerjaan      : ");
+        patient.setJob(in.next());
+
+        System.out.print("Masukkan Jenis Kelamin  : ");
+        patient.setGender(in.next());
+
+        System.out.print("Masukkan No Telp        : ");
+        patient.setPhone(in.next());
+
+        System.out.print("Masukkan No Telp Teman  : ");
+        patient.setPhoneFr(in.next());
+
+        System.out.print("Masukkan Status Menikah : ");
+        patient.setMarital(in.next());
+
+        presenter.create(patient);
     }
 
     @Override

@@ -1,5 +1,7 @@
 package app.views.patient;
 
+import app.models.Patient;
+
 /**
  * @author mochadwi
  */
@@ -7,13 +9,6 @@ package app.views.patient;
 public class PatientPresenter implements PatientContract.Presenter {
 
     private PatientContract.View view;
-
-    @Override
-    public void validation(int pilihan) {
-
-        view.showView();
-
-    }
 
     @Override
     public void menu(String pilihan) {
@@ -34,11 +29,30 @@ public class PatientPresenter implements PatientContract.Presenter {
             case "4":
                 view.showReadDataView();
                 break;
-
             default:
                 view.showMenuErrorView();
                 view.showView();
         }
+    }
+
+    @Override
+    public void create(Patient patient) {
+
+    }
+
+    @Override
+    public void read(Patient patient) {
+
+    }
+
+    @Override
+    public void update(Patient patient) {
+
+    }
+
+    @Override
+    public void delete(Patient patient) {
+
     }
 
     @Override
