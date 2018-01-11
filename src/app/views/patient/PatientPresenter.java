@@ -11,25 +11,34 @@ import java.util.List;
 
 public class PatientPresenter implements PatientContract.Presenter {
 
+
+
     private PatientContract.View view;
 
     @Override
     public void menu(String pilihan) {
 
         view.showLoading();
-        view.showMenuSuccessView();
 
         switch (pilihan) {
+            case "0":
+                // do nothing
+                view.showMenuSuccessView();
+                break;
             case "1":
+                view.showMenuSuccessView();
                 view.showCreateDataView();
                 break;
             case "2":
+                view.showMenuSuccessView();
                 view.showUpdateDataView();
                 break;
             case "3":
+                view.showMenuSuccessView();
                 view.showDeleteDataView();
                 break;
             case "4":
+                view.showMenuSuccessView();
                 view.showReadDataView();
                 break;
             default:

@@ -120,17 +120,46 @@ public class PatientView implements PatientContract.View {
         }
         System.out.println();
         System.out.print("==============================================================================");
-
     }
 
     @Override
     public void showUpdateDataView() {
+        Patient patient = new Patient();
 
+        System.out.println("=================================================");
+        System.out.println("|      <>   -= " + Strings.mMsgUpdateData + " " + Strings.mMsgTitlePatient + " =-   <>       |");
+        System.out.println("=================================================");
+
+        System.out.print("Ubah Nama Pasien    : ");
+        patient.setName(in.next());
+
+        System.out.print("Ubah Umur           : ");
+        patient.setAge(in.next());
+
+        System.out.print("Ubah Alamat         : ");
+        patient.setAddr(in.next());
+
+        System.out.print("Ubah Pekerjaan      : ");
+        patient.setJob(in.next());
+
+        System.out.print("Ubah Jenis Kelamin  : ");
+        patient.setGender(in.next());
+
+        System.out.print("Ubah No Telp        : ");
+        patient.setPhone(in.next());
+
+        System.out.print("Ubah No Telp Teman  : ");
+        patient.setPhoneFr(in.next());
+
+        System.out.print("Ubah Status Menikah : ");
+        patient.setMarital(in.next());
+
+        presenter.update(patient);
     }
 
     @Override
     public void showDeleteDataView() {
-
+        
     }
 
     @Override
