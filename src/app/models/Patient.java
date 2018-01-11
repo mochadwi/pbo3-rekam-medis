@@ -1,9 +1,30 @@
 package app.models;
 
 public class Patient {
-    private String name, age, addr, job, gender, phone, phoneFr, marital;
+    private String kd, name, age, addr, job, gender, phone, phoneFr, marital;
 
     public Patient() {
+    }
+
+    public Patient(String kd, String name, String age, String addr, String job, String gender, String phone,
+                   String phoneFr, String marital) {
+        this.kd = kd;
+        this.name = name;
+        this.age = age;
+        this.addr = addr;
+        this.job = job;
+        this.gender = gender;
+        this.phone = phone;
+        this.phoneFr = phoneFr;
+        this.marital = marital;
+    }
+
+    public String getKd() {
+        return kd;
+    }
+
+    public void setKd(String kd) {
+        this.kd = kd;
     }
 
     public String getName() {

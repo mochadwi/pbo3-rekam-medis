@@ -9,6 +9,8 @@ import app.BasePresenter;
 import app.BaseView;
 import app.models.Patient;
 
+import java.util.List;
+
 /**
  * @author mochadwi
  */
@@ -37,7 +39,7 @@ public interface PatientContract {
 
         void create(Patient patient);
 
-        void read(Patient patient);
+        List<Patient> read();
 
         void update(Patient patient);
 

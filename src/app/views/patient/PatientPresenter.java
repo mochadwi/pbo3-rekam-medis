@@ -1,6 +1,9 @@
 package app.views.patient;
 
 import app.models.Patient;
+import app.utils.Dummy;
+
+import java.util.List;
 
 /**
  * @author mochadwi
@@ -41,8 +44,8 @@ public class PatientPresenter implements PatientContract.Presenter {
     }
 
     @Override
-    public void read(Patient patient) {
-
+    public List<Patient> read() {
+        return Dummy.getPatients();
     }
 
     @Override
