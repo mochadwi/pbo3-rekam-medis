@@ -4,10 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum Status {
-    STOP(0),
-    AUTH(-1),
-    MENU(1),
-    DATA(2);
+    STOP(0), // Exit console
+    AUTH(-1), // regist or login menu
+    MENU(1), // main menu
+    DATA(2); // data menu
 
     private final int abbreviation;
 
