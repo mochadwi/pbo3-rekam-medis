@@ -11,7 +11,7 @@ import app.views.patient.PatientView;
 public class Dashboard {
 
     // store state / session of apps
-    public static Status status = Status.DATA;
+    public static Status status = Status.AUTH;
 
     public static void main(String[] args) {
 
@@ -26,10 +26,18 @@ public class Dashboard {
                 initMenu();
                 break;
 
-            case DATA:
+            case PATIENT:
 
                 initPatient();
+                break;
+
+            case DOCTOR:
+
                 initDoctor();
+                break;
+
+            case TRANSACTION:
+
                 initTransaction();
                 break;
 
@@ -64,8 +72,6 @@ public class Dashboard {
         patientView.setPresenter(patientPresenter);
 
         patientView.showView();
-
-        status = Status.MENU;
     }
 
     private static void initMenu() {
@@ -77,8 +83,6 @@ public class Dashboard {
         menuView.setPresenter(menuPresenter);
 
         menuView.showView();
-
-        status = Status.DATA;
     }
 
     private static void initRegist() {
