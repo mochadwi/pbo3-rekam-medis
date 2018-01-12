@@ -159,7 +159,7 @@ public class PatientView implements PatientContract.View {
 
     @Override
     public void showDeleteDataView() {
-        
+
     }
 
     @Override
@@ -169,7 +169,17 @@ public class PatientView implements PatientContract.View {
 
     @Override
     public void showMenuSuccessView() {
-        System.out.println("\n\n\n\nSucces!!\n\n\n\n");
+        System.out.println("\n\n\nSucces!!\n");
+    }
+
+    @Override
+    public void showMenuToContinue() {
+        try {
+            System.out.print("\n\n\nPress any key to continue...");
+            System.in.read();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

@@ -1,7 +1,9 @@
 package app.views.patient;
 
+import app.Dashboard;
 import app.models.Patient;
 import app.utils.Dummy;
+import app.utils.Status;
 
 import java.util.List;
 
@@ -10,8 +12,6 @@ import java.util.List;
  */
 
 public class PatientPresenter implements PatientContract.Presenter {
-
-
 
     private PatientContract.View view;
 
@@ -24,6 +24,7 @@ public class PatientPresenter implements PatientContract.Presenter {
             case "0":
                 // do nothing
                 view.showMenuSuccessView();
+                Dashboard.status = Status.MENU;
                 break;
             case "1":
                 view.showMenuSuccessView();
@@ -45,6 +46,8 @@ public class PatientPresenter implements PatientContract.Presenter {
                 view.showMenuErrorView();
                 view.showView();
         }
+
+        view.showMenuToContinue();
     }
 
     @Override
