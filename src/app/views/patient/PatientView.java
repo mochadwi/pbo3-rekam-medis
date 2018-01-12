@@ -5,6 +5,10 @@
  */
 package app.views.patient;
 
+import app.models.Patient;
+import app.utils.Strings;
+
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -13,46 +17,169 @@ import java.util.Scanner;
 
 public class PatientView implements PatientContract.View {
 
+    private Scanner in;
     private String mPilihan;
 
     private PatientContract.Presenter presenter;
 
+    public PatientView() {
+        this.in = new Scanner(System.in);
+    }
+
     @Override
     public void showView() {
-        Scanner in = new Scanner(System.in);
 
         System.out.println("===============================================================================");
-        System.out.println("                            -= KLINIK KATAMSO =-                               ");
-        System.out.println("   Jl. Brigjen Katamso, Cihaurgeulis, Cibeunying Kaler, Bandung, Jawa Barat    ");
+        System.out.println("                            -= " + Strings.mMsgHospital + " =-                               ");
+        System.out.println("   " + Strings.mMsgAddress + "    ");
         System.out.println("===============================================================================");
+
+        System.out.println("\n");
+
         System.out.println("=================================================");
-        System.out.println("|          <>   -= MENU UTAMA =-   <>           |");
+        System.out.println("|          <>   -= " + Strings.mMsgDefaultMenu + Strings.mMsgTitlePatient + " =-   <>          |");
         System.out.println("=================================================");
         System.out.println("|                                               |");
-        System.out.println("| 1. Data Pasien                                |");
-        System.out.println("| 2. Data Dokter                                |");
-        System.out.println("| 3. Data Obat                                  |");
-        System.out.println("| 4. Data Transaksi                             |");
-        System.out.println("| 0. Keluar                                     |");
+        System.out.println("| 1. " + Strings.mMsgCreateData + " \t\t\t\t\t\t\t\t|");
+        System.out.println("| 2. " + Strings.mMsgUpdateData + " \t\t\t\t\t\t\t\t\t|");
+        System.out.println("| 3. " + Strings.mMsgDeleteData + " \t\t\t\t\t\t\t\t|");
+        System.out.println("| 4. " + Strings.mMsgReadData + " \t\t\t\t\t\t\t\t|");
+        System.out.println("| 0. " + Strings.mMsgExit + Strings.mMsgTitlePatient + " \t\t\t\t\t\t|");
         System.out.println("|                                               |");
-        System.out.print("| Pilihan Anda ? ");
+        System.out.print(Strings.mMsgChoice);
         mPilihan = in.next();
-        System.out.println("                               |");
-        System.out.println("|                                               |");
         System.out.println("=================================================");
-        System.out.println("===============================================================================");
 
         presenter.menu(mPilihan);
     }
 
     @Override
+    public void showCreateDataView() {
+        Patient patient = new Patient();
+
+        System.out.println("=================================================");
+        System.out.println("|      <>   -= " + Strings.mMsgCreateData + " " + Strings.mMsgTitlePatient + " =-   <>       |");
+        System.out.println("=================================================");
+
+        System.out.print("Masukkan Nama Pasien    : ");
+        patient.setName(in.next());
+
+        System.out.print("Masukkan Umur           : ");
+        patient.setAge(in.next());
+
+        System.out.print("Masukkan Alamat         : ");
+        patient.setAddr(in.next());
+
+        System.out.print("Masukkan Pekerjaan      : ");
+        patient.setJob(in.next());
+
+        System.out.print("Masukkan Jenis Kelamin  : ");
+        patient.setGender(in.next());
+
+        System.out.print("Masukkan No Telp        : ");
+        patient.setPhone(in.next());
+
+        System.out.print("Masukkan No Telp Teman  : ");
+        patient.setPhoneFr(in.next());
+
+        System.out.print("Masukkan Status Menikah : ");
+        patient.setMarital(in.next());
+
+        presenter.create(patient);
+    }
+
+    @Override
+    public void showReadDataView() {
+
+        List<Patient> pasien = presenter.read();
+
+        System.out.println("|=============================================================================|");
+        System.out.println("|                       -= DATA PASIEN REKAM MEDIS=-                          |");
+        System.out.println("|=============================================================================|");
+
+        for (int i = 0; i < pasien.size(); i++) {
+
+            System.out.println("-----------------------------DATA PASIEN Ke-" + (i + 1) + "-------------------------------");
+            System.out.println("Kode Pasien   : " + pasien.get(i).getKd());
+            System.out.println("Nama Pasien   : " + pasien.get(i).getName());
+            System.out.println("Alamat        : " + pasien.get(i).getAddr());
+            System.out.println("Jenis Kelamin : " + pasien.get(i).getGender());
+            System.out.println("Umur          : " + pasien.get(i).getAge());
+//            System.out.println("Agama         : " + pasien.get(i).get);
+//            System.out.println("========================================================================");
+//            System.out.println("|                         -= DATA REKAM MEDIS =-                       |");
+//            System.out.println("========================================================================");
+//            System.out.println("| TGL BEROBAT |   PEMERIKSAAN   |       DIAGNOSIS     |   PENGOBATAN   |");
+//            System.out.println("========================================================================");
+//            System.out.println("|             |                 |                     |                |");
+//            System.out.println("========================================================================");
+//            System.out.print(pasien.get(i).TglBerobat);
+//            System.out.print(pasien.get(i).Pemeriksaan);
+//            System.out.print(pasien.get(i).Diagnosis);
+//            System.out.print(pasien.get(i).Pengobatan);
+        }
+        System.out.println();
+        System.out.print("==============================================================================");
+    }
+
+    @Override
+    public void showUpdateDataView() {
+        Patient patient = new Patient();
+
+        System.out.println("=================================================");
+        System.out.println("|      <>   -= " + Strings.mMsgUpdateData + " " + Strings.mMsgTitlePatient + " =-   <>       |");
+        System.out.println("=================================================");
+
+        System.out.print("Ubah Nama Pasien    : ");
+        patient.setName(in.next());
+
+        System.out.print("Ubah Umur           : ");
+        patient.setAge(in.next());
+
+        System.out.print("Ubah Alamat         : ");
+        patient.setAddr(in.next());
+
+        System.out.print("Ubah Pekerjaan      : ");
+        patient.setJob(in.next());
+
+        System.out.print("Ubah Jenis Kelamin  : ");
+        patient.setGender(in.next());
+
+        System.out.print("Ubah No Telp        : ");
+        patient.setPhone(in.next());
+
+        System.out.print("Ubah No Telp Teman  : ");
+        patient.setPhoneFr(in.next());
+
+        System.out.print("Ubah Status Menikah : ");
+        patient.setMarital(in.next());
+
+        presenter.update(patient);
+    }
+
+    @Override
+    public void showDeleteDataView() {
+
+    }
+
+    @Override
     public void showMenuErrorView() {
-        System.out.println("Pilih Angka 1-4!");
+        System.out.print("\n\n\n\nPilih Angka 1-4!\n\n\n\n");
     }
 
     @Override
     public void showMenuSuccessView() {
-        System.out.println("Succes!!");
+        System.out.println("\n\n\nSucces!!\n");
+    }
+
+    @Override
+    public void showMenuToContinue() {
+        try {
+            System.out.print("\n\n\nPress any key to continue...");
+            System.in.read();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
