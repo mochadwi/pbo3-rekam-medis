@@ -7,9 +7,12 @@ import app.views.login.LoginPresenter;
 import app.views.login.LoginView;
 import app.views.menu.MenuPresenter;
 import app.views.menu.MenuView;
+import app.views.patient.PatientPresenter;
+import app.views.patient.PatientView;
 
 public class Dashboard {
 
+    // store state / session of apps
     public static Status status = Status.DATA;
 
     public static void main(String[] args) {
@@ -25,10 +28,18 @@ public class Dashboard {
                 initMenu();
                 break;
 
-            case DATA:
+            case PATIENT:
 
                 initPatient();
+                break;
+
+            case DOCTOR:
+
                 initDoctor();
+                break;
+
+            case TRANSACTION:
+
                 initTransaction();
                 break;
 
@@ -62,11 +73,16 @@ public class Dashboard {
 
     private static void initPatient() {
 
+        PatientPresenter patientPresenter = new PatientPresenter();
+        PatientView patientView = new PatientView();
+
+        patientPresenter.bind(patientView);
+        patientView.setPresenter(patientPresenter);
+
+        patientView.showView();
     }
 
     private static void initMenu() {
-
-        status = Status.MENU;
 
         MenuPresenter menuPresenter = new MenuPresenter();
         MenuView menuView = new MenuView();
@@ -84,8 +100,6 @@ public class Dashboard {
 
     private static void initLogin() {
 
-        status = Status.AUTH;
-
         LoginPresenter loginPresenter = new LoginPresenter();
         LoginView loginView = new LoginView();
 
@@ -93,5 +107,7 @@ public class Dashboard {
         loginView.setPresenter(loginPresenter);
 
         loginView.showView();
+
+        status = Status.MENU;
     }
 }

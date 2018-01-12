@@ -1,61 +1,93 @@
 package app.models;
 
 public class Patient {
-    private String kode, nama, jk, alamat, agama, umur, pekerjaan; //JK : Jenis Kelamin
+    private String kd, name, age, addr, job, gender, phone, phoneFr, marital;
 
-    public String getKode() {
-        return kode;
+    public Patient() {
     }
 
-    public void setKode(String kode) {
-        this.kode = kode;
+    public Patient(String kd, String name, String age, String addr, String job, String gender, String phone,
+                   String phoneFr, String marital) {
+        this.kd = kd;
+        this.name = name;
+        this.age = age;
+        this.addr = addr;
+        this.job = job;
+        this.gender = gender;
+        this.phone = phone;
+        this.phoneFr = phoneFr;
+        this.marital = marital;
     }
 
-    public String getNama() {
-        return nama;
+    public String getKd() {
+        return kd;
     }
 
-    public void setNama(String nama) {
-        this.nama = nama;
+    public void setKd(String kd) {
+        this.kd = kd;
     }
 
-    public String getJk() {
-        return jk;
+    public String getName() {
+        return name;
     }
 
-    public void setJk(String jk) {
-        this.jk = jk;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getAlamat() {
-        return alamat;
+    public String getAge() {
+        return age;
     }
 
-    public void setAlamat(String alamat) {
-        this.alamat = alamat;
+    public void setAge(String age) {
+        this.age = age;
     }
 
-    public String getAgama() {
-        return agama;
+    public String getAddr() {
+        return addr;
     }
 
-    public void setAgama(String agama) {
-        this.agama = agama;
+    public void setAddr(String addr) {
+        this.addr = addr;
     }
 
-    public String getUmur() {
-        return umur;
+    public String getJob() {
+        return job;
     }
 
-    public void setUmur(String umur) {
-        this.umur = umur;
+    public void setJob(String job) {
+        this.job = job;
     }
 
-    public String getPekerjaan() {
-        return pekerjaan;
+    public String getGender() {
+        return gender;
     }
 
-    public void setPekerjaan(String pekerjaan) {
-        this.pekerjaan = pekerjaan;
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getPhoneFr() {
+        return phoneFr;
+    }
+
+    public void setPhoneFr(String phoneFr) {
+        this.phoneFr = phoneFr;
+    }
+
+    public String getMarital() {
+        return marital;
+    }
+
+    public void setMarital(String marital) {
+        this.marital = marital;
     }
 }
