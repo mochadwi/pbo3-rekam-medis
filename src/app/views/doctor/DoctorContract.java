@@ -17,14 +17,18 @@ public interface DoctorContract {
 
         void showView();
 
+        void showCreateDataView();
+        
+        void showReadDataView();
+        
         void showMenuErrorView();
 
-        
+        void showMenuSuccesView();
     }
 
     interface Presenter extends BasePresenter<View> {
         
-        void validation(int pilihan);
-        
+        void validation(String mPilihan);        
     }
+    
 }
