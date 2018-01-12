@@ -164,11 +164,13 @@ public class PatientView implements PatientContract.View {
 
     @Override
     public void showMenuErrorView() {
+      
         System.out.print("\n\n\n\nPilih Angka 1-4!\n\n\n\n");
     }
 
     @Override
     public void showMenuSuccessView() {
+
         System.out.println("\n\n\nSucces!!\n");
     }
 
