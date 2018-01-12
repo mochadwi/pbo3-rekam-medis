@@ -31,6 +31,8 @@ public interface PatientContract {
         void showMenuErrorView();
 
         void showMenuSuccessView();
+
+        void showMenuToContinue();
     }
 
     interface Presenter extends BasePresenter<View> {
