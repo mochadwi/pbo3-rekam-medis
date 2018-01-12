@@ -1,6 +1,6 @@
 // $Id$
 
-package app.libs.net.sf.persist;
+package net.sf.persist;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
