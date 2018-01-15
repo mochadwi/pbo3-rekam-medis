@@ -5,9 +5,6 @@
  */
 package app.views.doctor;
 
-import app.utils.Config;
-import app.views.menu.MenuContract;
-
 /**
  *
  * @author G-Eight
@@ -17,7 +14,7 @@ public class DoctorPresenter implements DoctorContract.Presenter {
    private DoctorContract.View menuView;
 
     @Override
-    public void validation(String pilihan) {
+    public void menu(String pilihan) {
         menuView.showLoading();
 
         //int choice = Integer.parseInt(pilihan);

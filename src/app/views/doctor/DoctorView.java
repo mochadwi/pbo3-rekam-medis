@@ -5,8 +5,11 @@
  */
 package app.views.doctor;
 
-import java.util.Scanner;
+import app.models.Doctor;
+import app.utils.Strings;
 import app.views.doctor.DoctorContract;
+
+import java.util.Scanner;
 
 /**
  *
@@ -14,9 +17,14 @@ import app.views.doctor.DoctorContract;
  */
 public class DoctorView implements DoctorContract.View {
     
+    private Scanner in;
     private String mPilihan;
 
     private DoctorContract.Presenter presenter;
+    
+    public DoctorView() {
+        this.in = new Scanner(System.in);
+    }
     
     @Override
     public void setPresenter(DoctorContract.Presenter presenter) {
@@ -25,29 +33,27 @@ public class DoctorView implements DoctorContract.View {
 
     @Override
     public void showView() {
-        Scanner in = new Scanner(System.in);
+        System.out.println("===============================================================================");
+        System.out.println("                            -= " + Strings.mMsgHospital + " =-                               ");
+        System.out.println("   " + Strings.mMsgAddress + "    ");
+        System.out.println("===============================================================================");
 
-        System.out.println("===============================================================================");
-        System.out.println("                            -= KLINIK KATAMSO =-                               ");
-        System.out.println("   Jl. Brigjen Katamso, Cihaurgeulis, Cibeunying Kaler, Bandung, Jawa Barat    ");
-        System.out.println("===============================================================================");
-        System.out.println("=================================================");
-        System.out.println("|          <>   -= MENU UTAMA =-   <>           |");
-        System.out.println("=================================================");
-        System.out.println("|                                               |");
-        System.out.println("| 1. Isi Data                                   |");
-        System.out.println("| 2. Hapus Data                                 |");
-        System.out.println("| 3. Edit Data                                  |");
-        System.out.println("| 4. Tampil Data                                |");
-        System.out.println("| 0. Keluar                                     |");
-        System.out.println("|                                               |");
-        System.out.println("=================================================");
         System.out.println("\n");
-        System.out.print("Pilihan Anda ? ");
+
+        System.out.println("=================================================");
+        System.out.println("|          <>   -= " + Strings.mMsgDefaultMenu + Strings.mMsgTitleDoctor + " =-   <>          |");
+        System.out.println("=================================================");
+        System.out.println("|                                               |");
+        System.out.println("| 1. " + Strings.mMsgCreateData + " \t\t\t\t\t\t\t\t|");
+        System.out.println("| 2. " + Strings.mMsgUpdateData + " \t\t\t\t\t\t\t\t\t|");
+        System.out.println("| 3. " + Strings.mMsgDeleteData + " \t\t\t\t\t\t\t\t|");
+        System.out.println("| 4. " + Strings.mMsgReadData + " \t\t\t\t\t\t\t\t|");
+        System.out.println("| 0. " + Strings.mMsgExit + Strings.mMsgTitleDoctor + " \t\t\t\t\t\t|");
+        System.out.println("|                                               |");
+        System.out.print(Strings.mMsgChoice);
         mPilihan = in.next();
-        System.out.println("\n");
-        System.out.println("===============================================================================");
-          
+        System.out.println("=================================================");
+
         presenter.validation(mPilihan);
     }
 
@@ -82,22 +88,25 @@ public class DoctorView implements DoctorContract.View {
 
     @Override
     public void showCreateDataView() {
+        Doctor doctor = new Doctor();
+
+        System.out.println("=================================================");
+        System.out.println("|      <>   -= " + Strings.mMsgCreateData + " " + Strings.mMsgTitlePatient + " =-   <>       |");
+        System.out.println("=================================================");
+
+        System.out.print("Masukkan ID Dokter           : ");
+        doctor.setId(in.next());
         
-        String idDokter, namaDokter, riwayatPend, noTelp;
-        Scanner in = new Scanner(System.in);
-        
-        System.out.println("===ISI DATA===");
-        System.out.print("ID Dokter : ");
-        idDokter = in.nextLine();
-        System.out.print("Nama Dokter : ");
-        namaDokter = in.nextLine();
-        System.out.print("Riwayat Pendidikan : ");
-        riwayatPend = in.nextLine();
-        System.out.print("Nomor Telepon : ");     
-        noTelp = in.nextLine();
-        
-        
-        
+        System.out.print("Masukkan Nama Dokter         : ");
+        doctor.setName(in.next());
+
+        System.out.print("Masukkan Pendidikan Terakhir : ");
+        doctor.setEducationalBkgrd(in.next());
+
+        System.out.print("Masukkan No Telp             : ");
+        doctor.setPhone(in.next());
+
+        presenter.create(doctor);
     }
 
     @Override
