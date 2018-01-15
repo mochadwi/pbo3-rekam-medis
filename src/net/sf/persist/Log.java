@@ -1,6 +1,6 @@
 // $Id$
 
-package app.libs.net.sf.persist;
+package net.sf.persist;
 
 import org.apache.log4j.Logger;
 
@@ -14,10 +14,10 @@ public final class Log {
 		// do nothing
 	}
 
-	public static final String ENGINE = "persist.engine";
-	public static final String PROFILING = "persist.profiling";
-	public static final String RESULTS = "persist.results";
-	public static final String PARAMETERS = "persist.parameters";
+	public static final String ENGINE = "net.sf.persist.engine";
+	public static final String PROFILING = "net.sf.persist.profiling";
+	public static final String RESULTS = "net.sf.persist.results";
+	public static final String PARAMETERS = "net.sf.persist.parameters";
 
 	private static boolean log4jAvailable = false;
 	static {

@@ -1,6 +1,6 @@
 // $Id$
 
-package app.libs.net.sf.persist;
+package net.sf.persist;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

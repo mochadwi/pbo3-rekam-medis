@@ -1,6 +1,6 @@
 // $Id$
 
-package app.libs.net.sf.persist.annotations;
+package persist.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -8,15 +8,11 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Defines a table mapping for a given class.
+ * Sets the related field to not be mapped to a column. Must be added to a
+ * getter or a setter associated with a field.
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
-public @interface Table {
-
-	/**
-	 * Name of the table mapped to the class.
-	 */
-	String name();
+@Target(ElementType.METHOD)
+public @interface NoColumn {
 
 }
