@@ -1,6 +1,6 @@
 // $Id$
 
-package app.libs.net.sf.persist;
+package net.sf.persist;
 
 @SuppressWarnings("serial")
 public final class RuntimeSQLException extends RuntimeException {

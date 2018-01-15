@@ -1,6 +1,6 @@
 // $Id$
 
-package app.libs.net.sf.persist.annotations;
+package persist.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -1,6 +1,6 @@
 // $Id$
 
-package app.libs.net.sf.persist;
+package net.sf.persist;
 
 import java.lang.reflect.Method;
 import java.sql.DatabaseMetaData;
@@ -330,7 +330,7 @@ public final class TableMapping extends Mapping {
 		}
 
 		if (ret == null) {
-			// last resort: compare with all table names in the schema 
+			// last resort: compare with all table names in the schema
 			// (may be very expensive in databases such as oracle)
 			// this may end up being used in databases that allow case sensitive names (such as postgresql)
 			resultSet = metaData.getTables(null, schema, "%", null);

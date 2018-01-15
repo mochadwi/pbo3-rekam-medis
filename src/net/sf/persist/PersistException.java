@@ -1,6 +1,6 @@
 // $Id: RuntimeSQLException.java 12 2007-08-29 05:23:13Z jcamaia $
 
-package app.libs.net.sf.persist;
+package net.sf.persist;
 
 @SuppressWarnings("serial")
 public final class PersistException extends RuntimeException {
