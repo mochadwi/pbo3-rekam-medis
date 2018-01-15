@@ -1,6 +1,8 @@
 package app;
 
 import app.utils.Status;
+import app.views.doctor.DoctorPresenter;
+import app.views.doctor.DoctorView;
 import app.views.login.LoginPresenter;
 import app.views.login.LoginView;
 import app.views.menu.MenuPresenter;
@@ -11,7 +13,7 @@ import app.views.patient.PatientView;
 public class Dashboard {
 
     // store state / session of apps
-    public static Status status = Status.AUTH;
+    public static Status status = Status.DATA;
 
     public static void main(String[] args) {
 
@@ -60,7 +62,13 @@ public class Dashboard {
     }
 
     private static void initDoctor() {
+        DoctorPresenter doctorPresenter = new DoctorPresenter();
+        DoctorView doctorView = new DoctorView();
 
+        doctorPresenter.bind(doctorView);
+        doctorView.setPresenter(doctorPresenter);
+
+        doctorView.showView();
     }
 
     private static void initPatient() {

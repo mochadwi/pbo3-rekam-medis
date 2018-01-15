@@ -7,6 +7,7 @@ package app.views.doctor;
 
 import app.BasePresenter;
 import app.BaseView;
+import java.util.List;
 
 /**
  *
@@ -17,14 +18,32 @@ public interface DoctorContract {
 
         void showView();
 
+        void showCreateDataView();
+
+        void showReadDataView();
+
+        void showUpdateDataView();
+
+        void showDeleteDataView();
+
         void showMenuErrorView();
 
-        
+        void showMenuSuccessView();
+
+        void showMenuToContinue();
     }
 
     interface Presenter extends BasePresenter<View> {
         
-        void validation(int pilihan);
-        
+        void menu(String pilihan);
+
+        void create(Doctor patient);
+
+        List<Patient> read();
+
+        void update(Patient patient);
+
+        void delete(Patient patient);
     }
+    
 }
