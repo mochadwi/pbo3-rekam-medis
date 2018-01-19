@@ -1,6 +1,6 @@
 package app.views.login;
 
-import app.utils.Config;
+import app.utils.Strings;
 import app.views.menu.MenuContract;
 
 import java.util.Scanner;
