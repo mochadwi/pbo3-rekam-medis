@@ -17,20 +17,40 @@ public class Db {
     private String host = "localhost";
     private String port = "5432";
 
-    public static Persist persist;
+    private Persist persist;
 
-    public Db() {
-        String url = "jdbc:postgresql://" + host + ":" + port + "/" + dbName + "?user=" + usernameDb + "&password=" + passwordDb;
+    private static Db instance = null;
+
+    private Db() {
+        // Exists only to defeat instantiation.
+        String urlWithSchema = "jdbc:postgresql://" + host + ":" + port + "/" + dbName + "?currentSchema=rekam_medis_db&user=" + usernameDb + "&password=" + passwordDb;
+//        String url = "jdbc:postgresql://" + host + ":" + port + "/" + dbName + "?user=" + usernameDb + "&password=" + passwordDb;
         Connection conn = null;
 
         try {
             Class.forName("org.postgresql.Driver");
-            conn = DriverManager.getConnection(url);
-            System.out.println("Hello, postgresql driver");
+            conn = DriverManager.getConnection(urlWithSchema);
+            System.out.println("Hello, postgresql driver connected to:" +
+                    "\n" + urlWithSchema);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         persist = new Persist(conn);
+    }
+
+    public static synchronized Db getInstance() {
+        if (instance == null) {
+            synchronized (Db.class) {
+                if (instance == null) {
+                    instance = new Db();
+                }
+            }
+        }
+        return instance;
+    }
+
+    public Persist initPersist() {
+        return this.persist;
     }
 }

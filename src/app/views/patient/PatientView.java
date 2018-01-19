@@ -5,7 +5,7 @@
  */
 package app.views.patient;
 
-import app.models.Patient;
+import app.models.DataPasien;
 import app.utils.Strings;
 
 import java.util.List;
@@ -55,57 +55,57 @@ public class PatientView implements PatientContract.View {
 
     @Override
     public void showCreateDataView() {
-        Patient patient = new Patient();
+        DataPasien dataPasien = new DataPasien();
 
         System.out.println("=================================================");
         System.out.println("|      <>   -= " + Strings.mMsgCreateData + " " + Strings.mMsgTitlePatient + " =-   <>       |");
         System.out.println("=================================================");
 
-        System.out.print("Masukkan Nama Pasien    : ");
-        patient.setName(in.next());
+        System.out.print("Masukkan Nama DataPasien    : ");
+//        dataPasien.setName(in.next());
 
         System.out.print("Masukkan Umur           : ");
-        patient.setAge(in.next());
+//        dataPasien.setAge(in.next());
 
         System.out.print("Masukkan Alamat         : ");
-        patient.setAddr(in.next());
+//        dataPasien.setAddr(in.next());
 
         System.out.print("Masukkan Pekerjaan      : ");
-        patient.setJob(in.next());
+//        dataPasien.setJob(in.next());
 
         System.out.print("Masukkan Jenis Kelamin  : ");
-        patient.setGender(in.next());
+//        dataPasien.setGender(in.next());
 
         System.out.print("Masukkan No Telp        : ");
-        patient.setPhone(in.next());
+//        dataPasien.setPhone(in.next());
 
         System.out.print("Masukkan No Telp Teman  : ");
-        patient.setPhoneFr(in.next());
+//        dataPasien.setPhoneFr(in.next());
 
         System.out.print("Masukkan Status Menikah : ");
-        patient.setMarital(in.next());
+//        dataPasien.setMarital(in.next());
 
-        presenter.create(patient);
+        presenter.create(dataPasien);
     }
 
     @Override
     public void showReadDataView() {
 
-        List<Patient> pasien = presenter.read();
+        List<DataPasien> dataPasien = presenter.read();
 
         System.out.println("|=============================================================================|");
         System.out.println("|                       -= DATA PASIEN REKAM MEDIS=-                          |");
         System.out.println("|=============================================================================|");
 
-        for (int i = 0; i < pasien.size(); i++) {
+        for (int i = 0; i < dataPasien.size(); i++) {
 
             System.out.println("-----------------------------DATA PASIEN Ke-" + (i + 1) + "-------------------------------");
-            System.out.println("Kode Pasien   : " + pasien.get(i).getKd());
-            System.out.println("Nama Pasien   : " + pasien.get(i).getName());
-            System.out.println("Alamat        : " + pasien.get(i).getAddr());
-            System.out.println("Jenis Kelamin : " + pasien.get(i).getGender());
-            System.out.println("Umur          : " + pasien.get(i).getAge());
-//            System.out.println("Agama         : " + pasien.get(i).get);
+            System.out.println("Kode DataPasien   : " + dataPasien.get(i).getId_pasien());
+            System.out.println("Nama DataPasien   : " + dataPasien.get(i).getNama_pasien());
+            System.out.println("Alamat        : " + dataPasien.get(i).getAlamat_pasien());
+            System.out.println("Jenis Kelamin : " + dataPasien.get(i).getJenis_kelamin());
+            System.out.println("Umur          : " + dataPasien.get(i).getUmur());
+//            System.out.println("Agama         : " + dataPasien.get(i).get);
 //            System.out.println("========================================================================");
 //            System.out.println("|                         -= DATA REKAM MEDIS =-                       |");
 //            System.out.println("========================================================================");
@@ -113,10 +113,10 @@ public class PatientView implements PatientContract.View {
 //            System.out.println("========================================================================");
 //            System.out.println("|             |                 |                     |                |");
 //            System.out.println("========================================================================");
-//            System.out.print(pasien.get(i).TglBerobat);
-//            System.out.print(pasien.get(i).Pemeriksaan);
-//            System.out.print(pasien.get(i).Diagnosis);
-//            System.out.print(pasien.get(i).Pengobatan);
+//            System.out.print(dataPasien.get(i).TglBerobat);
+//            System.out.print(dataPasien.get(i).Pemeriksaan);
+//            System.out.print(dataPasien.get(i).Diagnosis);
+//            System.out.print(dataPasien.get(i).Pengobatan);
         }
         System.out.println();
         System.out.print("==============================================================================");
@@ -124,37 +124,37 @@ public class PatientView implements PatientContract.View {
 
     @Override
     public void showUpdateDataView() {
-        Patient patient = new Patient();
+        DataPasien dataPasien = new DataPasien();
 
         System.out.println("=================================================");
         System.out.println("|      <>   -= " + Strings.mMsgUpdateData + " " + Strings.mMsgTitlePatient + " =-   <>       |");
         System.out.println("=================================================");
 
-        System.out.print("Ubah Nama Pasien    : ");
-        patient.setName(in.next());
+        System.out.print("Ubah Nama DataPasien    : ");
+        dataPasien.setNama_pasien(in.next());
 
         System.out.print("Ubah Umur           : ");
-        patient.setAge(in.next());
+        dataPasien.setUmur(in.next());
 
         System.out.print("Ubah Alamat         : ");
-        patient.setAddr(in.next());
+        dataPasien.setAlamat_pasien(in.next());
 
         System.out.print("Ubah Pekerjaan      : ");
-        patient.setJob(in.next());
+        dataPasien.setPekerjaan(in.next());
 
         System.out.print("Ubah Jenis Kelamin  : ");
-        patient.setGender(in.next());
+        dataPasien.setJenis_kelamin(in.next());
 
         System.out.print("Ubah No Telp        : ");
-        patient.setPhone(in.next());
+        dataPasien.setNomor_telepon(in.next());
 
         System.out.print("Ubah No Telp Teman  : ");
-        patient.setPhoneFr(in.next());
+        dataPasien.setNomor_telepon_kerabat(in.next());
 
         System.out.print("Ubah Status Menikah : ");
-        patient.setMarital(in.next());
+        dataPasien.setStatus_perkawinan(in.next());
 
-        presenter.update(patient);
+        presenter.update(dataPasien);
     }
 
     @Override

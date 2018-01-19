@@ -1,7 +1,8 @@
 package app.views.patient;
 
 import app.Dashboard;
-import app.models.Patient;
+import app.models.DataPasien;
+import app.utils.Db;
 import app.utils.Dummy;
 import app.utils.Status;
 
@@ -51,22 +52,23 @@ public class PatientPresenter implements PatientContract.Presenter {
     }
 
     @Override
-    public void create(Patient patient) {
+    public void create(DataPasien dataPasien) {
 
+        Db.getInstance().initPersist().insert(Dummy.getPatients().get(0));
     }
 
     @Override
-    public List<Patient> read() {
+    public List<DataPasien> read() {
         return Dummy.getPatients();
     }
 
     @Override
-    public void update(Patient patient) {
+    public void update(DataPasien dataPasien) {
 
     }
 
     @Override
-    public void delete(Patient patient) {
+    public void delete(DataPasien dataPasien) {
 
     }
 
