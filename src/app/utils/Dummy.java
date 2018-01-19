@@ -1,6 +1,6 @@
 package app.utils;
 
-import app.models.Patient;
+import app.models.DataPasien;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,16 +10,16 @@ import java.util.List;
  */
 
 public class Dummy {
-    public static List<Patient> getPatients() {
-        List<Patient> patients = new ArrayList<>();
+    public static List<DataPasien> getPatients() {
+        List<DataPasien> dataPasiens = new ArrayList<>();
 
-        patients.add(new Patient("101", "nama org", "19", "tuisba", "SE", "Male", "0812341234",
-                "0820834123412", "married"));
-        patients.add(new Patient("102", "nama org", "19", "tuisba", "SE", "Male", "0812341234",
-                "0820834123412", "married"));
-        patients.add(new Patient("103", "nama org", "19", "tuisba", "SE", "Male", "0812341234",
-                "0820834123412", "married"));
+        dataPasiens.add(new DataPasien("101", "nama org", "19", "tuisba", "SE", "Male", "0812341234",
+                "married", "0820834123412", 1));
+        dataPasiens.add(new DataPasien("102", "nama org", "19", "tuisba", "SE", "Male", "0812341234",
+                "married", "0820834123412", 1));
+        dataPasiens.add(new DataPasien("103", "nama org", "19", "tuisba", "SE", "Male", "0812341234",
+                "married", "0820834123412", 1));
 
-        return patients;
+        return dataPasiens;
     }
 }

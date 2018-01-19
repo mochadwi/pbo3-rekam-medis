@@ -7,7 +7,7 @@ package app.views.patient;
 
 import app.BasePresenter;
 import app.BaseView;
-import app.models.Patient;
+import app.models.DataPasien;
 
 import java.util.List;
 
@@ -39,12 +39,12 @@ public interface PatientContract {
 
         void menu(String pilihan);
 
-        void create(Patient patient);
+        void create(DataPasien dataPasien);
 
-        List<Patient> read();
+        List<DataPasien> read();
 
-        void update(Patient patient);
+        void update(DataPasien dataPasien);
 
-        void delete(Patient patient);
+        void delete(DataPasien dataPasien);
     }
 }
