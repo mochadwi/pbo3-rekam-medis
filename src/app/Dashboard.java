@@ -13,11 +13,13 @@ import app.views.menu.MenuPresenter;
 import app.views.menu.MenuView;
 import app.views.patient.PatientPresenter;
 import app.views.patient.PatientView;
+import app.views.user.UserPresenter;
+import app.views.user.UserView;
 
 public class Dashboard {
 
     // store state / session of apps
-    public static Status status = Status.AUTH;
+    public static Status status = Status.REGS;
 
     public static void main(String[] args) {
 
@@ -74,6 +76,16 @@ public class Dashboard {
         medicalRecordView.showView();
     }
 
+    private static void initMedicalRecord() {
+        MedicalRecordPresenter medicalRecordPresenter = new MedicalRecordPresenter();
+        MedicalRecordView medicalRecordView = new MedicalRecordView();
+        
+        medicalRecordPresenter.bind(medicalRecordView);
+        medicalRecordView.setPresenter(medicalRecordPresenter);
+        
+        medicalRecordView.showView();
+    }
+
     private static void initMedicine() {
         MedicinePresenter medicinePresenter = new MedicinePresenter();
         MedicineView medicineView = new MedicineView();
@@ -117,7 +129,14 @@ public class Dashboard {
     }
 
     private static void initRegist() {
-
+        UserPresenter userPresenter = new UserPresenter();
+        UserView userView = new UserView();
+        
+        userPresenter.bind(userView);
+        userView.setPresenter(userPresenter);
+        
+        userView.showView();
+        
         status = Status.AUTH;
     }
 
@@ -131,4 +150,5 @@ public class Dashboard {
 
         loginView.showView();
     }
+    
 }

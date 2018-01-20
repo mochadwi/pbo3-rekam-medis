@@ -5,7 +5,8 @@ import java.util.Map;
 
 public enum Status {
     STOP(0), // Exit console
-    AUTH(-1), // regist or login menu
+    AUTH(-1), // login menu
+    REGS(-2), // regist
     MENU(1), // main menu
     DATA(2), // data menu
     PATIENT(21), // patient menu
