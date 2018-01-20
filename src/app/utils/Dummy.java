@@ -13,7 +13,7 @@ public class Dummy {
     public static List<DataPasien> getPatients() {
         List<DataPasien> dataPasiens = new ArrayList<>();
 
-        dataPasiens.add(new DataPasien("101", "nama org", "19", "tuisba", "SE", "Male", "0812341234",
+        dataPasiens.add(new DataPasien("P0001", "nama org", "19", "tuisba", "SE", "Male", "0812341234",
                 "married", "0820834123412", 1));
         dataPasiens.add(new DataPasien("102", "nama org", "19", "tuisba", "SE", "Male", "0812341234",
                 "married", "0820834123412", 1));
