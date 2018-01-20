@@ -5,9 +5,10 @@
  */
 package app.views.doctor;
 
-import app.models.Doctor;
+import app.models.DataDokter;
 import app.utils.Strings;
 import app.views.doctor.DoctorContract;
+import java.util.List;
 
 import java.util.Scanner;
 
@@ -24,11 +25,6 @@ public class DoctorView implements DoctorContract.View {
     
     public DoctorView() {
         this.in = new Scanner(System.in);
-    }
-    
-    @Override
-    public void setPresenter(DoctorContract.Presenter presenter) {
-        this.presenter = presenter;
     }
 
     @Override
@@ -54,16 +50,120 @@ public class DoctorView implements DoctorContract.View {
         mPilihan = in.next();
         System.out.println("=================================================");
 
-        presenter.validation(mPilihan);
+        presenter.menu(mPilihan);
     }
 
+    @Override
+    public void showCreateDataView() {
+        DataDokter dataDokter = new DataDokter();
+
+        System.out.println("=================================================");
+        System.out.println("|      <>   -= " + Strings.mMsgCreateData + " " + Strings.mMsgTitleDoctor + " =-   <>       |");
+        System.out.println("=================================================");
+
+        System.out.print("Masukkan ID Dokter           : ");
+        dataDokter.setId_dokter(in.next());
+        
+        System.out.print("Masukkan Nama Dokter         : ");
+        dataDokter.setNama_dokter(in.next());
+        
+        System.out.print("Masukkan Alamat Dokter       : ");
+        dataDokter.setAlamat_dokter(in.next());
+
+        System.out.print("Masukkan Pendidikan Terakhir : ");
+        dataDokter.setRiwayat_pendidikan(in.next());
+
+        System.out.print("Masukkan No Telp Dokter      : ");
+        dataDokter.setNomor_telepon_dokter(in.next());
+
+        presenter.create(dataDokter);
+    }
+
+    @Override
+    public void showReadDataView() {
+      List<DataDokter> dataDokter = presenter.read();
+
+        System.out.println("|=============================================================================|");
+        System.out.println("|                       -= DATA DOKTER REKAM MEDIS=-                          |");
+        System.out.println("|=============================================================================|");
+
+        for (int i = 0; i < dataDokter.size(); i++) {
+
+            System.out.println("-----------------------------DATA DOKTER Ke-" + (i + 1) + "-------------------------------");
+            System.out.println("Id Dokter            : " + dataDokter.get(i).getId_dokter());
+            System.out.println("Nama Dokter          : " + dataDokter.get(i).getNama_dokter());
+            System.out.println("Alamat Dokter        : " + dataDokter.get(i).getAlamat_dokter());
+            System.out.println("Riwayat Pendidikan   : " + dataDokter.get(i).getRiwayat_pendidikan());
+            System.out.println("Nomor Telepon Dokter : " + dataDokter.get(i).getNomor_telepon_dokter());
+//            System.out.println("Umur          : " + dataDokter.get(i).getUmur());
+//            System.out.println("Agama         : " + dataDokter.get(i).get);
+//            System.out.println("========================================================================");
+//            System.out.println("|                         -= DATA REKAM MEDIS =-                       |");
+//            System.out.println("========================================================================");
+//            System.out.println("| TGL BEROBAT |   PEMERIKSAAN   |       DIAGNOSIS     |   PENGOBATAN   |");
+//            System.out.println("========================================================================");
+//            System.out.println("|             |                 |                     |                |");
+//            System.out.println("========================================================================");
+//            System.out.print(dataDokter.get(i).TglBerobat);
+//            System.out.print(dataDokter.get(i).Pemeriksaan);
+//            System.out.print(dataDokter.get(i).Diagnosis);
+//            System.out.print(dataDokter.get(i).Pengobatan);
+        }
+        System.out.println();
+        System.out.print("==============================================================================");
+    }
+
+    @Override
+    public void showUpdateDataView() {
+        DataDokter dataDokter = new DataDokter();
+
+        System.out.println("=================================================");
+        System.out.println("|      <>   -= " + Strings.mMsgUpdateData + " " + Strings.mMsgTitleDoctor + " =-   <>       |");
+        System.out.println("=================================================");
+
+        System.out.print("Ubah Nama Dokter                : ");
+        dataDokter.setNama_dokter(in.next());
+
+        System.out.print("Ubah Umur Dokter                : ");
+        dataDokter.setAlamat_dokter(in.next());
+
+        System.out.print("Ubah Riwayat Pendidikan Dokter  : ");
+        dataDokter.setRiwayat_pendidikan(in.next());
+
+        System.out.print("Ubah Nomor Telepon Dokter       : ");
+        dataDokter.setNomor_telepon_dokter(in.next());
+
+        presenter.update(dataDokter);
+    }
+
+    @Override
+    public void showDeleteDataView() {
+
+    }
+    
     @Override
     public void showMenuErrorView() {
         System.out.println("Pilih Angka 1-4!");
     }
+    
     @Override
-    public void showMenuSuccesView() {
+    public void showMenuSuccessView() {
         System.out.println("Succes!!");
+    }
+    
+    @Override
+    public void showMenuToContinue() {
+        try {
+            System.out.print("\n\n\nPress any key to continue...");
+            System.in.read();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+        @Override
+    public void setPresenter(DoctorContract.Presenter presenter) {
+        this.presenter = presenter;
     }
     
     @Override
@@ -84,33 +184,5 @@ public class DoctorView implements DoctorContract.View {
     @Override
     public void hideLoading() {
 
-    }
-
-    @Override
-    public void showCreateDataView() {
-        Doctor doctor = new Doctor();
-
-        System.out.println("=================================================");
-        System.out.println("|      <>   -= " + Strings.mMsgCreateData + " " + Strings.mMsgTitlePatient + " =-   <>       |");
-        System.out.println("=================================================");
-
-        System.out.print("Masukkan ID Dokter           : ");
-        doctor.setId(in.next());
-        
-        System.out.print("Masukkan Nama Dokter         : ");
-        doctor.setName(in.next());
-
-        System.out.print("Masukkan Pendidikan Terakhir : ");
-        doctor.setEducationalBkgrd(in.next());
-
-        System.out.print("Masukkan No Telp             : ");
-        doctor.setPhone(in.next());
-
-        presenter.create(doctor);
-    }
-
-    @Override
-    public void showReadDataView() {
-        
     }
 }

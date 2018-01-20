@@ -5,39 +5,83 @@
  */
 package app.views.doctor;
 
+import app.Dashboard;
+import app.models.DataDokter;
+import app.utils.Db;
+import app.utils.Status;
+import java.util.List;
+
 /**
  *
  * @author G-Eight
  */
 public class DoctorPresenter implements DoctorContract.Presenter {
 
-   private DoctorContract.View menuView;
+   private DoctorContract.View view;
 
     @Override
     public void menu(String pilihan) {
-        menuView.showLoading();
 
-        //int choice = Integer.parseInt(pilihan);
-        if (pilihan.equals("1") || pilihan.equals("2") || pilihan.equals("3")
-                || pilihan.equals("4")) {
+        view.showLoading();
 
-//            menuView.showMenuSuccesView();
-            menuView.showCreateDataView();
-
-        } else {
-            menuView.showMenuErrorView();
-            menuView.showView();
+        switch (pilihan) {
+            case "0":
+                // do nothing
+                view.showMenuSuccessView();
+                Dashboard.status = Status.MENU;
+                break;
+            case "1":
+                view.showMenuSuccessView();
+                view.showCreateDataView();
+                break;
+            case "2":
+                view.showMenuSuccessView();
+                view.showUpdateDataView();
+                break;
+            case "3":
+                view.showMenuSuccessView();
+                view.showDeleteDataView();
+                break;
+            case "4":
+                view.showMenuSuccessView();
+                view.showReadDataView();
+                break;
+            default:
+                view.showMenuErrorView();
+                view.showView();
         }
+
+        view.showMenuToContinue();
+    }
+
+    @Override
+    public void create(DataDokter dataDokter) {
+
+        Db.getInstance().initPersist().insert(dataDokter);
+    }
+
+    @Override
+    public List<DataDokter> read() {
+        return Db.getInstance().initPersist().readList(DataDokter.class);
+    }
+
+    @Override
+    public void update(DataDokter dataDokter) {
 
     }
 
     @Override
-    public void bind(DoctorContract.View menuView) {
-        this.menuView = menuView;
+    public void delete(DataDokter dataDokter) {
+
+    }
+
+    @Override
+    public void bind(DoctorContract.View view) {
+        this.view = view;
     }
 
     @Override
     public void unBind() {
-        this.menuView = null;
+        this.view = null;
     }
 }

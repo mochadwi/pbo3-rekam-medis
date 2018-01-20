@@ -7,6 +7,7 @@ package app.views.doctor;
 
 import app.BasePresenter;
 import app.BaseView;
+import app.models.DataDokter;
 import java.util.List;
 
 /**
@@ -37,13 +38,13 @@ public interface DoctorContract {
         
         void menu(String pilihan);
 
-        void create(Doctor patient);
+        void create(DataDokter dataDokter);
 
-        List<Patient> read();
+        List<DataDokter> read();
 
-        void update(Patient patient);
+        void update(DataDokter dataDokter);
 
-        void delete(Patient patient);
+        void delete(DataDokter dataDokter);
     }
     
 }
