@@ -6,7 +6,6 @@
 package app.views.patient;
 
 import app.models.DataPasien;
-import app.utils.Dummy;
 import app.utils.Strings;
 
 import java.util.List;
@@ -101,8 +100,10 @@ public class PatientView implements PatientContract.View {
         System.out.println("|                       -= DATA PASIEN REKAM MEDIS=-                          |");
         System.out.println("|=============================================================================|");
 
+        if (dataPasien.size() == 0) showMenuErrorView("Data kosong!");
+
         int i = 0;
-        while (i < dataPasien.size() && dataPasien.get(i).getValue_pasien() != 0) {
+        do {
 
             System.out.println("-----------------------------DATA PASIEN Ke-" + (i + 1) + "-------------------------------");
             System.out.println("Kode DataPasien   : " + dataPasien.get(i).getId_pasien());
@@ -112,7 +113,7 @@ public class PatientView implements PatientContract.View {
             System.out.println("Umur          : " + dataPasien.get(i).getUmur());
 
             i++;
-        }
+        } while (i < dataPasien.size() && dataPasien.get(i).getValue_pasien() != 0);
 
         System.out.println();
         System.out.print("==============================================================================");
