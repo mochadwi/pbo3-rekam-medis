@@ -3,10 +3,10 @@ package app.views.patient;
 import app.Dashboard;
 import app.models.DataPasien;
 import app.utils.Db;
-import app.utils.Dummy;
 import app.utils.Status;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author mochadwi
@@ -43,8 +43,9 @@ public class PatientPresenter implements PatientContract.Presenter {
                 view.showMenuSuccessView();
                 view.showReadDataView();
                 break;
+
             default:
-                view.showMenuErrorView();
+                view.showMenuErrorView("Pilih Angka 0-4!");
                 view.showView();
         }
 
@@ -54,22 +55,63 @@ public class PatientPresenter implements PatientContract.Presenter {
     @Override
     public void create(DataPasien dataPasien) {
 
-        Db.getInstance().initPersist().insert(Dummy.getPatients().get(0));
+        Db.getInstance().initPersist().insert(dataPasien);
     }
 
     @Override
     public List<DataPasien> read() {
-        return Dummy.getPatients();
+
+        return Db.getInstance().initPersist().readList(DataPasien.class);
     }
 
     @Override
-    public void update(DataPasien dataPasien) {
+    public void update(String idPasien) {
 
+//        String fieldUpdated =
+//        Db.getInstance().initPersist().executeUpdate("UPDATE data_pasien SET [field] WHERE id_pasien=?", idPasien);
+//        Db.getInstance().initPersist().update();
     }
 
     @Override
     public void delete(DataPasien dataPasien) {
 
+        Db.getInstance().initPersist()
+                .executeUpdate("UPDATE data_pasien SET value_pasien=0 WHERE id_pasien=?", dataPasien);
+    }
+
+    @Override
+    public String find(String idPasien) {
+
+        DataPasien pasien = Db.getInstance().initPersist().readByPrimaryKey(DataPasien.class, idPasien);
+
+        if (pasien != null) return pasien.getId_pasien();
+
+        return "";
+    }
+
+    @Override
+    public String findMin() {
+        return "";
+    }
+
+    @Override
+    public String findMax() {
+
+        return Db.getInstance().initPersist().read(String.class,
+                "SELECT MAX(id_pasien) FROM data_pasien");
+    }
+
+    @Override
+    public boolean validateData(String data) {
+
+        if (data.isEmpty()) {
+
+            view.showMenuErrorView("Data Tidak ditemukan!");
+            return false;
+        }
+
+
+        return true;
     }
 
     @Override
