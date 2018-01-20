@@ -23,4 +23,6 @@ public class Strings {
 
     public static final String mMsgTitlePatient = "Pasien";
     public static final String mMsgTitleDoctor = "Dokter";
+    public static final String mMsgTitleMedicine = "Obat";
+    public static final String mMsgTitleMedicalRecord = "Rekam Medis";
 }
