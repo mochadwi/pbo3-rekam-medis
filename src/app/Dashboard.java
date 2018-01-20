@@ -5,6 +5,10 @@ import app.views.doctor.DoctorPresenter;
 import app.views.doctor.DoctorView;
 import app.views.login.LoginPresenter;
 import app.views.login.LoginView;
+import app.views.medicalrecord.MedicalRecordPresenter;
+import app.views.medicalrecord.MedicalRecordView;
+import app.views.medicine.MedicinePresenter;
+import app.views.medicine.MedicineView;
 import app.views.menu.MenuPresenter;
 import app.views.menu.MenuView;
 import app.views.patient.PatientPresenter;
@@ -13,7 +17,7 @@ import app.views.patient.PatientView;
 public class Dashboard {
 
     // store state / session of apps
-    public static Status status = Status.DATA;
+    public static Status status = Status.MEDICALRECORD;
 
     public static void main(String[] args) {
 
@@ -37,12 +41,17 @@ public class Dashboard {
 
                 initDoctor();
                 break;
-
-            case TRANSACTION:
-
-                initTransaction();
+                
+            case MEDICINE:
+                
+                initMedicine();
                 break;
+                
+            case MEDICALRECORD:
 
+                initMedicalRecord();
+                break;
+                
             default:
                 initDefault();
         }
@@ -57,10 +66,26 @@ public class Dashboard {
         status = Status.MENU;
     }
 
-    private static void initTransaction() {
-
+    private static void initMedicalRecord() {
+        MedicalRecordPresenter medicalRecordPresenter = new MedicalRecordPresenter();
+        MedicalRecordView medicalRecordView = new MedicalRecordView();
+        
+        medicalRecordPresenter.bind(medicalRecordView);
+        medicalRecordView.setPresenter(medicalRecordPresenter);
+        
+        medicalRecordView.showView();
     }
 
+    private static void initMedicine() {
+        MedicinePresenter medicinePresenter = new MedicinePresenter();
+        MedicineView medicineView = new MedicineView();
+        
+        medicinePresenter.bind(medicineView);
+        medicineView.setPresenter(medicinePresenter);
+        
+        medicineView.showView();
+    }
+    
     private static void initDoctor() {
         DoctorPresenter doctorPresenter = new DoctorPresenter();
         DoctorView doctorView = new DoctorView();

@@ -11,7 +11,7 @@ public enum Status {
     PATIENT(21), // patient menu
     DOCTOR(22), // doctor menu
     MEDICINE(23), // medicine menu
-    TRANSACTION(24); // transaction menu
+    MEDICALRECORD(24); // transaction menu
 
     private final int abbreviation;
 
