@@ -27,9 +27,9 @@ public interface MedicineContract {
  
         void showDeleteDataView(); 
  
-        void showMenuErrorView(); 
+        void showMenuErrorView(String errMessage); 
  
-        void showMenuSuccessView(); 
+        void showMenuSuccessView(String errMessage); 
  
         void showMenuToContinue(); 
     } 
@@ -44,6 +44,14 @@ public interface MedicineContract {
  
         void update(DataObat dataObat); 
  
-        void delete(DataObat dataObat); 
+        void delete(String kdObat); 
+        
+        String find(String kdObat);
+        
+        String findMin();
+        
+        String findMax();
+        
+        boolean validateData (String data);
     } 
 } 

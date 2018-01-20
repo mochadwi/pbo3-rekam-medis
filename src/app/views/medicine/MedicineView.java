@@ -68,6 +68,8 @@ public class MedicineView implements MedicineContract.View {
         System.out.print("Masukkan Jenis Obat     : "); 
         dataObat.setVariety(in.next()); 
  
+        dataObat.setValue(1);
+        
         presenter.create(dataObat); 
     } 
  
@@ -77,17 +79,20 @@ public class MedicineView implements MedicineContract.View {
         List<DataObat> dataObat = presenter.read(); 
  
         System.out.println("|=============================================================================|"); 
-        System.out.println("|                       -= DATA PASIEN REKAM MEDIS=-                          |"); 
+        System.out.println("|                       -= DATA OBAT=-                          |"); 
         System.out.println("|=============================================================================|"); 
  
+        if (dataObat.isEmpty()) showMenuErrorView("Data kosong!");
+
+        int count = 1; 
         for (int i = 0; i < dataObat.size(); i++) { 
- 
-            System.out.println("-----------------------------DATA PASIEN Ke-" + (i + 1) + "-------------------------------"); 
+            
+            if (dataObat.get(i).getValue() == 0) continue;
+            System.out.println("-----------------------------DATA OBAT Ke-" + (count++) + "-------------------------------"); 
             System.out.println("Kode Obat   : " + dataObat.get(i).getKd()); 
             System.out.println("Nama Obat   : " + dataObat.get(i).getName()); 
             System.out.println("Jenis Obat  : " + dataObat.get(i).getVariety()); 
- 
-        } 
+        }
         System.out.println(); 
         System.out.print("=============================================================================="); 
     } 
@@ -100,28 +105,46 @@ public class MedicineView implements MedicineContract.View {
         System.out.println("|      <>   -= " + Strings.mMsgUpdateData + " " + Strings.mMsgTitleMedicine + " =-   <>       |"); 
         System.out.println("================================================="); 
  
+        System.out.print("Cari Kode Obat    : ");
+        dataObat.setKd(in.next());
+        String found = presenter.validateData(presenter.find(dataObat.getKd())) ? "-1" : "-2";
+        presenter.menu(found);
+        
         System.out.print("Ubah Nama Obat    : "); 
         dataObat.setName(in.next()); 
  
         System.out.print("Ubah Jenis Obat   : "); 
         dataObat.setVariety(in.next()); 
+        
+        dataObat.setValue(1);
  
         presenter.update(dataObat); 
     } 
  
     @Override 
     public void showDeleteDataView() { 
+        String kdObat = ""; 
  
+        System.out.println("================================================="); 
+        System.out.println("|      <>   -= " + Strings.mMsgDeleteData + " " + Strings.mMsgTitleMedicine + " =-   <>       |"); 
+        System.out.println("================================================="); 
+ 
+        System.out.print("Cari ID             : "); 
+        kdObat = in.next(); 
+        String found = presenter.validateData(presenter.find(kdObat)) ? "-1" : "-3"; 
+        presenter.menu(found); 
+ 
+        presenter.delete(kdObat); 
     } 
  
     @Override 
-    public void showMenuErrorView() { 
-        System.out.print("\n\n\n\nPilih Angka 1-4!\n\n\n\n"); 
+    public void showMenuErrorView(String errMessage) { 
+        System.out.print("\n\n\n\n" + errMessage + "\n\n\n\n"); 
     } 
  
     @Override 
-    public void showMenuSuccessView() { 
-        System.out.println("\n\n\nSucces!!\n"); 
+    public void showMenuSuccessView(String errMsg) { 
+        System.out.println(errMsg); 
     } 
  
     @Override 

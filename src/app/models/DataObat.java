@@ -12,12 +12,13 @@ import net.sf.persist.annotations.Column;
  * @author G-Eight
  */
 public class DataObat {
-    private String kd, name, variety, value;
+    private String kd, name, variety;
+    private int value;
 
     public DataObat() {
     }
 
-    public DataObat(String kd, String name, String variety, String value) {
+    public DataObat(String kd, String name, String variety, int value) {
         this.kd = kd;
         this.name = name;
         this.variety = variety;
@@ -52,11 +53,11 @@ public class DataObat {
     }
 
     @Column(name = "value_obat")
-    public String getValue() {
+    public int getValue() {
         return value;
     }
 
-    public void setValue(String value) {
+    public void setValue(int value) {
         this.value = value;
     }
     
