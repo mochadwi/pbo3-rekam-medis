@@ -9,7 +9,7 @@ import java.sql.DriverManager;
  * @author mochadwi
  */
 public class Db {
-
+  
     private String usernameDb = "nawkgwclpwtjif";
     private String passwordDb = "eaebcfbf0ce51a3eea975049ba9d1cc8f526b3098a62e980d609a4cde6e9e438";
     private String dbName = "d5cl9lkgh000i6";
