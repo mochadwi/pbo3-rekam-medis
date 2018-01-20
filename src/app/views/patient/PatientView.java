@@ -6,7 +6,6 @@
 package app.views.patient;
 
 import app.models.DataPasien;
-import app.utils.Dummy;
 import app.utils.Strings;
 
 import java.util.List;
@@ -89,6 +88,8 @@ public class PatientView implements PatientContract.View {
         System.out.print("Masukkan Status Menikah : ");
         dataPasien.setStatus_perkawinan(in.next());
 
+        dataPasien.setValue_pasien(1);
+
         presenter.create(dataPasien);
     }
 
@@ -101,8 +102,10 @@ public class PatientView implements PatientContract.View {
         System.out.println("|                       -= DATA PASIEN REKAM MEDIS=-                          |");
         System.out.println("|=============================================================================|");
 
+        if (dataPasien.size() == 0) showMenuErrorView("Data kosong!");
+
         int i = 0;
-        while (i < dataPasien.size() && dataPasien.get(i).getValue_pasien() != 0) {
+        do {
 
             System.out.println("-----------------------------DATA PASIEN Ke-" + (i + 1) + "-------------------------------");
             System.out.println("Kode DataPasien   : " + dataPasien.get(i).getId_pasien());
@@ -112,7 +115,8 @@ public class PatientView implements PatientContract.View {
             System.out.println("Umur          : " + dataPasien.get(i).getUmur());
 
             i++;
-        }
+            if (dataPasien.get(i).getValue_pasien() == 0) continue;
+        } while (i < dataPasien.size() - 1);
 
         System.out.println();
         System.out.print("==============================================================================");
@@ -127,14 +131,15 @@ public class PatientView implements PatientContract.View {
         System.out.println("=================================================");
 
         System.out.print("Cari ID             : ");
-        String found = presenter.validateData(presenter.find(in.next())) ? "2" : "0";
+        dataPasien.setId_pasien(in.next());
+        String found = presenter.validateData(presenter.find(dataPasien.getId_pasien())) ? "-1" : "-2";
         presenter.menu(found);
 
         System.out.print("Ubah Nama           : ");
         dataPasien.setNama_pasien(in.next());
 
         System.out.print("Ubah Umur           : ");
-        dataPasien.setUmur(in.next());
+        dataPasien.setUmur(in.next()); // limit to 3
 
         System.out.print("Ubah Alamat         : ");
         dataPasien.setAlamat_pasien(in.next());
@@ -154,8 +159,9 @@ public class PatientView implements PatientContract.View {
         System.out.print("Ubah Status Menikah : ");
         dataPasien.setStatus_perkawinan(in.next());
 
-//        presenter.update(dataPasien);
-//        presenter.find()
+        dataPasien.setValue_pasien(1);
+
+        presenter.update(dataPasien);
     }
 
     @Override
@@ -174,8 +180,8 @@ public class PatientView implements PatientContract.View {
     }
 
     @Override
-    public void showMenuSuccessView() {
-        System.out.println("\n\n\nSucces!!\n");
+    public void showMenuSuccessView(String errMsg) {
+        System.out.println(errMsg);
     }
 
     @Override
