@@ -1,6 +1,6 @@
 package app.views.login;
 
-import app.utils.Config;
+import app.utils.Strings;
 
 public class LoginPresenter implements LoginContract.Presenter {
 
@@ -26,7 +26,7 @@ public class LoginPresenter implements LoginContract.Presenter {
     @Override
     public boolean isLoggedIn(String name, String pass) {
 
-        if ((!name.equals(Config.mNamaPengguna) || !pass.equals(Config.mKataSandi)) && attempts < 2) {
+        if ((!name.equals(Strings.mNamaPengguna) || !pass.equals(Strings.mKataSandi)) && attempts < 2) {
             attempts++;
             view.showLoginErrorView();
             view.showView();
