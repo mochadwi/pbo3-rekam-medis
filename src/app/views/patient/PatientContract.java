@@ -32,7 +32,7 @@ public interface PatientContract {
 
         void showMenuErrorView(String errMessage);
 
-        void showMenuSuccessView();
+        void showMenuSuccessView(String errMessage);
 
         void showMenuToContinue();
     }
@@ -45,7 +45,7 @@ public interface PatientContract {
 
         List<DataPasien> read();
 
-        void update(String idPasien);
+        void update(DataPasien idPasien);
 
         void delete(DataPasien dataPasien);
 

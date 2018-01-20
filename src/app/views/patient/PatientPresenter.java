@@ -6,7 +6,6 @@ import app.utils.Db;
 import app.utils.Status;
 
 import java.util.List;
-import java.util.Objects;
 
 /**
  * @author mochadwi
@@ -24,24 +23,34 @@ public class PatientPresenter implements PatientContract.Presenter {
         switch (pilihan) {
             case "0":
                 // do nothing
-                view.showMenuSuccessView();
-                Dashboard.status = Status.MENU;
+                view.showMenuSuccessView("\n\n\nSucces!!\n");
+                Dashboard.status = Status.PATIENT;
                 break;
             case "1":
-                view.showMenuSuccessView();
+                view.showMenuSuccessView("\n\n\nSucces!!\n");
                 view.showCreateDataView();
                 break;
             case "2":
-                view.showMenuSuccessView();
+                view.showMenuSuccessView("\n\n\nSucces!!\n");
                 view.showUpdateDataView();
                 break;
             case "3":
-                view.showMenuSuccessView();
+                view.showMenuSuccessView("\n\n\nSucces!!\n");
                 view.showDeleteDataView();
                 break;
             case "4":
-                view.showMenuSuccessView();
+                view.showMenuSuccessView("\n\n\nSucces!!\n");
                 view.showReadDataView();
+                break;
+
+            case "-1":
+                view.showMenuSuccessView("\n\n\nData found!!\n");
+                Dashboard.status = Status.PATIENT;
+                break;
+
+            case "-2":
+                view.showMenuSuccessView("\n\n\nData not found!!\n");
+                view.showUpdateDataView();
                 break;
 
             default:
@@ -65,11 +74,11 @@ public class PatientPresenter implements PatientContract.Presenter {
     }
 
     @Override
-    public void update(String idPasien) {
+    public void update(DataPasien pasien) {
 
 //        String fieldUpdated =
 //        Db.getInstance().initPersist().executeUpdate("UPDATE data_pasien SET [field] WHERE id_pasien=?", idPasien);
-//        Db.getInstance().initPersist().update();
+        Db.getInstance().initPersist().update(pasien);
     }
 
     @Override
