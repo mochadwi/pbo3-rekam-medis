@@ -78,7 +78,7 @@ public class MedicalRecordView implements MedicalRecordContract.View {
 
         System.out.print("Masukkan Tanggal Berobat (dd-MMM-yyyy)): ");
         dataRekamMedis.setTglBerobat(presenter.convertDate(in.next()));
-        
+      
         System.out.print("Masukkan Keluhan         : ");
         dataRekamMedis.setKeluhan(in.next());
 
