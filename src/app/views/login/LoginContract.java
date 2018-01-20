@@ -6,9 +6,8 @@ import app.BaseView;
 public interface LoginContract {
     interface View extends BaseView<Presenter> {
         void showView();
-        void showLoginErrorView();
+        void showLoginErrorView(String errMsg);
         void showLoginSuccessView();
-        void showLoginAttemptFailed();
     }
 
     interface Presenter extends BasePresenter<View> {

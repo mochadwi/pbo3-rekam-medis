@@ -10,16 +10,10 @@ public class LoginView implements LoginContract.View {
     private String mNamaPengguna, mKataSandi;
 
     private LoginContract.Presenter presenter;
-    
-    private MenuContract.View menuView;
 
     @Override
     public void setPresenter(LoginContract.Presenter presenter) {
         this.presenter = presenter;
-    }
-    
-    public void setMenuView(MenuContract.View menuView) {
-        this.menuView = menuView;
     }
 
     @Override
@@ -43,19 +37,14 @@ public class LoginView implements LoginContract.View {
     }
 
     @Override
-    public void showLoginErrorView() {
-        System.out.println("Nama dan sandi salah, silakan ulangi!\n\n");
+    public void showLoginErrorView(String errMsg) {
+        System.out.println(errMsg);
     }
 
     @Override
     public void showLoginSuccessView() {
         System.out.println("Selamat Datang!!!\n\n");
         
-    }
-
-    @Override
-    public void showLoginAttemptFailed() {
-        System.out.println("Kesempatan anda habis!\n\n");
     }
 
     @Override
