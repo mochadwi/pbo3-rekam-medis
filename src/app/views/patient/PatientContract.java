@@ -30,6 +30,8 @@ public interface PatientContract {
 
         void showMenuErrorView();
 
+        void showMenuErrorView(String errMessage);
+
         void showMenuSuccessView();
 
         void showMenuToContinue();
@@ -43,8 +45,18 @@ public interface PatientContract {
 
         List<DataPasien> read();
 
-        void update(DataPasien dataPasien);
+        void update(String idPasien);
 
         void delete(DataPasien dataPasien);
+
+        String find(String idPasien);
+
+        String findMin();
+
+        String findMax();
+
+//        <T> boolean validateData(T data); // receives any kind of data
+
+        boolean validateData(String data);
     }
 }
