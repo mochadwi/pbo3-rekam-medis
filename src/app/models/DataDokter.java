@@ -4,12 +4,13 @@ import net.sf.persist.annotations.Column;
 
 public class DataDokter {
     private String id_dokter, nama_dokter, riwayat_pendidikan, alamat_dokter,
-                   nomor_telepon_dokter, value_dokter;
+                   nomor_telepon_dokter;
+    private int value_dokter;
 
     public DataDokter() {
     }
-    
-    public DataDokter(String id_dokter, String nama_dokter, String riwayat_pendidikan, String alamat_dokter, String nomor_telepon_dokter, String value_dokter) {
+
+    public DataDokter(String id_dokter, String nama_dokter, String riwayat_pendidikan, String alamat_dokter, String nomor_telepon_dokter, int value_dokter) {
         this.id_dokter = id_dokter;
         this.nama_dokter = nama_dokter;
         this.riwayat_pendidikan = riwayat_pendidikan;
@@ -17,8 +18,6 @@ public class DataDokter {
         this.nomor_telepon_dokter = nomor_telepon_dokter;
         this.value_dokter = value_dokter;
     }
-
-    
     
     public String getId_dokter() {
         return id_dokter;
@@ -61,11 +60,11 @@ public class DataDokter {
         this.nomor_telepon_dokter = nomor_telepon_dokter;
     }
 
-    public String getValue_dokter() {
+    public int getValue_dokter() {
         return value_dokter;
     }
 
-    public void setValue_dokter(String value_dokter) {
+    public void setValue_dokter(int value_dokter) {
         this.value_dokter = value_dokter;
     }
 

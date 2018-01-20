@@ -75,6 +75,8 @@ public class DoctorView implements DoctorContract.View {
 
         System.out.print("Masukkan No Telp Dokter      : ");
         dataDokter.setNomor_telepon_dokter(in.next());
+        
+        dataDokter.setValue_dokter(1);
 
         presenter.create(dataDokter);
     }
@@ -84,31 +86,25 @@ public class DoctorView implements DoctorContract.View {
       List<DataDokter> dataDokter = presenter.read();
 
         System.out.println("|=============================================================================|");
-        System.out.println("|                       -= DATA DOKTER REKAM MEDIS=-                          |");
+        System.out.println("|                       -= DATA DOKTER=-                          |");
         System.out.println("|=============================================================================|");
 
-        for (int i = 0; i < dataDokter.size(); i++) {
+        if (dataDokter.isEmpty()) showMenuErrorView("Data kosong!"); 
 
-            System.out.println("-----------------------------DATA DOKTER Ke-" + (i + 1) + "-------------------------------");
+        int count = 1; 
+        for (int i = 0; i < dataDokter.size(); i++) { 
+
+            if (dataDokter.get(i).getValue_dokter()== 0) continue;
+            
+            System.out.println("-----------------------------DATA DOKTER Ke-" + (count++) + "-------------------------------"); 
             System.out.println("Id Dokter            : " + dataDokter.get(i).getId_dokter());
             System.out.println("Nama Dokter          : " + dataDokter.get(i).getNama_dokter());
             System.out.println("Alamat Dokter        : " + dataDokter.get(i).getAlamat_dokter());
             System.out.println("Riwayat Pendidikan   : " + dataDokter.get(i).getRiwayat_pendidikan());
             System.out.println("Nomor Telepon Dokter : " + dataDokter.get(i).getNomor_telepon_dokter());
-//            System.out.println("Umur          : " + dataDokter.get(i).getUmur());
-//            System.out.println("Agama         : " + dataDokter.get(i).get);
-//            System.out.println("========================================================================");
-//            System.out.println("|                         -= DATA REKAM MEDIS =-                       |");
-//            System.out.println("========================================================================");
-//            System.out.println("| TGL BEROBAT |   PEMERIKSAAN   |       DIAGNOSIS     |   PENGOBATAN   |");
-//            System.out.println("========================================================================");
-//            System.out.println("|             |                 |                     |                |");
-//            System.out.println("========================================================================");
-//            System.out.print(dataDokter.get(i).TglBerobat);
-//            System.out.print(dataDokter.get(i).Pemeriksaan);
-//            System.out.print(dataDokter.get(i).Diagnosis);
-//            System.out.print(dataDokter.get(i).Pengobatan);
+
         }
+
         System.out.println();
         System.out.print("==============================================================================");
     }
@@ -121,6 +117,11 @@ public class DoctorView implements DoctorContract.View {
         System.out.println("|      <>   -= " + Strings.mMsgUpdateData + " " + Strings.mMsgTitleDoctor + " =-   <>       |");
         System.out.println("=================================================");
 
+        System.out.print("Cari ID             : ");
+        dataDokter.setId_dokter(in.next());
+        String found = presenter.validateData(presenter.find(dataDokter.getId_dokter())) ? "-1" : "-2";
+        presenter.menu(found);
+        
         System.out.print("Ubah Nama Dokter                : ");
         dataDokter.setNama_dokter(in.next());
 
@@ -132,23 +133,36 @@ public class DoctorView implements DoctorContract.View {
 
         System.out.print("Ubah Nomor Telepon Dokter       : ");
         dataDokter.setNomor_telepon_dokter(in.next());
+        
+        dataDokter.setValue_dokter(1);
 
         presenter.update(dataDokter);
     }
 
     @Override
     public void showDeleteDataView() {
-
+        String idDokter = ""; 
+ 
+        System.out.println("================================================="); 
+        System.out.println("|      <>   -= " + Strings.mMsgDeleteData + " " + Strings.mMsgTitleDoctor + " =-   <>       |"); 
+        System.out.println("================================================="); 
+ 
+        System.out.print("Cari ID             : "); 
+        idDokter = in.next(); 
+        String found = presenter.validateData(presenter.find(idDokter)) ? "-1" : "-3"; 
+        presenter.menu(found); 
+ 
+        presenter.delete(idDokter); 
     }
     
     @Override
-    public void showMenuErrorView() {
-        System.out.println("Pilih Angka 1-4!");
+    public void showMenuErrorView(String errMessage) {
+        System.out.println("\n\n\n\n" + errMessage + "\n\n\n\n");
     }
     
     @Override
-    public void showMenuSuccessView() {
-        System.out.println("Succes!!");
+    public void showMenuSuccessView(String errMsg) {
+        System.out.println(errMsg);
     }
     
     @Override
