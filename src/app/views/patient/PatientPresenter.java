@@ -44,8 +44,13 @@ public class PatientPresenter implements PatientContract.Presenter {
                 break;
 
             case "-1":
-                view.showMenuSuccessView("\n\n\nData found!!\n");
+                view.showMenuSuccessView("\n\n\nPatient data found!!\n");
                 Dashboard.status = Status.PATIENT;
+                break;
+
+            case "-3":
+                view.showMenuSuccessView("\n\n\nData not found!!\n");
+                view.showDeleteDataView();
                 break;
 
             case "-2":
@@ -76,16 +81,14 @@ public class PatientPresenter implements PatientContract.Presenter {
     @Override
     public void update(DataPasien pasien) {
 
-//        String fieldUpdated =
-//        Db.getInstance().initPersist().executeUpdate("UPDATE data_pasien SET [field] WHERE id_pasien=?", idPasien);
         Db.getInstance().initPersist().update(pasien);
     }
 
     @Override
-    public void delete(DataPasien dataPasien) {
+    public void delete(String idPasien) {
 
         Db.getInstance().initPersist()
-                .executeUpdate("UPDATE data_pasien SET value_pasien=0 WHERE id_pasien=?", dataPasien);
+                .executeUpdate("UPDATE data_pasien SET value_pasien=0 WHERE id_pasien=?", idPasien);
     }
 
     @Override
