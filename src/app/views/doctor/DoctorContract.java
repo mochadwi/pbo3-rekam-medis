@@ -27,9 +27,9 @@ public interface DoctorContract {
 
         void showDeleteDataView();
 
-        void showMenuErrorView();
+        void showMenuErrorView(String errMessage);
 
-        void showMenuSuccessView();
+        void showMenuSuccessView(String errMessage);
 
         void showMenuToContinue();
     }
@@ -42,9 +42,17 @@ public interface DoctorContract {
 
         List<DataDokter> read();
 
-        void update(DataDokter dataDokter);
+        void update(DataDokter idDokter);
 
-        void delete(DataDokter dataDokter);
+        void delete(String idDokter);
+        
+        String find(String idDokter);
+        
+        String findMin();
+        
+        String findMax();
+        
+        boolean validateData(String data);
     }
     
 }
