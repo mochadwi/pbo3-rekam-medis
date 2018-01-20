@@ -17,7 +17,7 @@ import app.views.patient.PatientView;
 public class Dashboard {
 
     // store state / session of apps
-    public static Status status = Status.MEDICALRECORD;
+    public static Status status = Status.AUTH;
 
     public static void main(String[] args) {
 
@@ -61,9 +61,7 @@ public class Dashboard {
 
     private static void initDefault() {
         initLogin();
-        initRegist();
-
-        status = Status.MENU;
+//        initRegist();
     }
 
     private static void initMedicalRecord() {
@@ -132,7 +130,5 @@ public class Dashboard {
         loginView.setPresenter(loginPresenter);
 
         loginView.showView();
-
-        status = Status.MENU;
     }
 }

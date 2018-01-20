@@ -28,7 +28,7 @@ public class MenuView implements MenuContract.View {
         System.out.println("| 1. Data Pasien                                |");
         System.out.println("| 2. Data Dokter                                |");
         System.out.println("| 3. Data Obat                                  |");
-        System.out.println("| 4. Data Transaksi                             |");
+        System.out.println("| 4. Data Rekam Medis                           |");
         System.out.println("| 0. Keluar                                     |");
         System.out.println("|                                               |");
         System.out.print("| Pilihan Anda ? ");
@@ -42,13 +42,23 @@ public class MenuView implements MenuContract.View {
     }
 
     @Override
-    public void showMenuErrorView() {
-        System.out.println("Pilih Angka 1-4!");
+    public void showMenuErrorView(String errMessage) {
+        System.out.print("\n\n\n\n" + errMessage + "\n\n\n\n");
     }
 
     @Override
-    public void showMenuSuccesView() {
-        System.out.println("Succes!!");
+    public void showMenuSuccessView() {
+        System.out.println("\n\n\nSucces!!\n");
+    }
+
+    @Override
+    public void showMenuToContinue() {
+        try {
+            System.out.print("\n\n\nPress any key to continue...");
+            System.in.read();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     
     @Override

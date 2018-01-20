@@ -9,9 +9,11 @@ public interface MenuContract {
 
         void showView();
 
-        void showMenuErrorView();
+        void showMenuErrorView(String errMsg);
 
-        void showMenuSuccesView();
+        void showMenuSuccessView();
+
+        void showMenuToContinue();
     }
 
     interface Presenter extends BasePresenter<View> {
