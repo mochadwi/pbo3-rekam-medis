@@ -102,21 +102,20 @@ public class PatientView implements PatientContract.View {
         System.out.println("|                       -= DATA PASIEN REKAM MEDIS=-                          |");
         System.out.println("|=============================================================================|");
 
-        if (dataPasien.size() == 0) showMenuErrorView("Data kosong!");
+        if (dataPasien.isEmpty()) showMenuErrorView("Data kosong!");
 
-        int i = 0;
-        do {
+        int count = 1;
+        for (int i = 0; i < dataPasien.size(); i++) {
 
-            System.out.println("-----------------------------DATA PASIEN Ke-" + (i + 1) + "-------------------------------");
+            if (dataPasien.get(i).getValue_pasien() == 0) continue;
+
+            System.out.println("-----------------------------DATA PASIEN Ke-" + (count++) + "-------------------------------");
             System.out.println("Kode DataPasien   : " + dataPasien.get(i).getId_pasien());
             System.out.println("Nama DataPasien   : " + dataPasien.get(i).getNama_pasien());
             System.out.println("Alamat        : " + dataPasien.get(i).getAlamat_pasien());
             System.out.println("Jenis Kelamin : " + dataPasien.get(i).getJenis_kelamin());
             System.out.println("Umur          : " + dataPasien.get(i).getUmur());
-
-            i++;
-            if (dataPasien.get(i).getValue_pasien() == 0) continue;
-        } while (i < dataPasien.size() - 1);
+        }
 
         System.out.println();
         System.out.print("==============================================================================");
@@ -166,7 +165,18 @@ public class PatientView implements PatientContract.View {
 
     @Override
     public void showDeleteDataView() {
+        String idPasien = "";
 
+        System.out.println("=================================================");
+        System.out.println("|      <>   -= " + Strings.mMsgDeleteData + " " + Strings.mMsgTitlePatient + " =-   <>       |");
+        System.out.println("=================================================");
+
+        System.out.print("Cari ID             : ");
+        idPasien = in.next();
+        String found = presenter.validateData(presenter.find(idPasien)) ? "-1" : "-3";
+        presenter.menu(found);
+
+        presenter.delete(idPasien);
     }
 
     @Override

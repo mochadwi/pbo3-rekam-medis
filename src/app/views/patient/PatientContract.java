@@ -47,7 +47,7 @@ public interface PatientContract {
 
         void update(DataPasien idPasien);
 
-        void delete(DataPasien dataPasien);
+        void delete(String idPasien);
 
         String find(String idPasien);
 
